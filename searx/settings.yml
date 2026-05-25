@@ -804,6 +804,31 @@ engines:
     display_type: ["infobox"]
     categories: [general]
 
+  - name: dogpile
+    engine: json_engine
+    shortcut: dog
+    disabled: true
+    search_url: https://www.dogpile.com/api/search
+    method: POST
+    request_body: '{{"q": "{query}", "qadf": "{safe_search}", "page": "{pageno}"}}'
+    paging: true
+    safesearch: true
+    safe_search_map:
+      0: none
+      1: moderate
+      2: heavy
+    results_query: results
+    url_query: clickUrl
+    title_query: title
+    content_query: description
+    title_html_to_text: true
+    content_html_to_text: true
+    about:
+      website: https://www.dogpile.com
+      use_official_api: false
+      require_api_key: false
+      results: JSON
+
   - name: duckduckgo
     engine: duckduckgo
     shortcut: ddg
