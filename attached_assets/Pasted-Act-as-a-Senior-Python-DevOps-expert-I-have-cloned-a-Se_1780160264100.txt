@@ -1,0 +1,35 @@
+Act as a Senior Python & DevOps expert. I have cloned a SearXNG fork ("Nexus Search") into this workspace. Your task is to fix the environment, verify the code, and ensure it can run on both PythonAnywhere (WSGI environment) and Hugging Face Spaces (Docker environment) WITHOUT altering the core search engine functionality or logic.
+
+Please follow these strict phases step-by-step:
+
+PHASE 1: ENVIRONMENT & LOGIC VERIFICATION (DO NOT CHANGE ENGINE CORE)
+1. Check the main search engine core and dependencies. Ensure all absolute/relative paths are correct and standard.
+2. Fix any missing or corrupted dependencies in requirements.txt (Ensure 'msgspec', 'flask', 'pyyaml', 'lxml', 'chameleon', 'jinja2', 'babel', and 'gunicorn' are properly listed).
+3. Verify that the project structure compiles cleanly under Python 3.10+ environments.
+
+PHASE 2: PYTHONANYWHERE (WSGI) COMPATIBILITY
+1. Ensure the app can initialize as a standard WSGI application (`from searx.webapp import app as application`).
+2. Verify that local relative imports don't break when running outside a container.
+
+PHASE 3: HUGGING FACE SPACES (DOCKER) CONFIGURATION
+1. Verify or create a clean, lightweight 'Dockerfile' at the repository root that uses the official lightweight baseline:
+   FROM searxng/searxng:latest
+   EXPOSE 7860
+   CMD ["/usr/local/searxng/docker-entrypoint.sh"]
+2. Configure or overwrite 'README.md' to include the exact Hugging Face Metadata Header required for Docker Spaces:
+   ---
+   title: Nexus Search Ultimate
+   emoji: 🔍
+   colorFrom: blue
+   colorTo: green
+   sdk: docker
+   app_port: 7860
+   pinned: false
+   ---
+
+PHASE 4: CLEAN UP & FORCE PUSH TO GITHUB (MAIN BRANCH)
+1. Clean the Git history. Completely remove any large binary files (like 'searx/data/lid.176.ftz') from tracking and add them to '.gitignore' so they don't block the push.
+2. Switch the workspace branch completely from any automated branches to the true 'main' branch.
+3. Once all files are perfectly verified and the environment is clean, help me safely push all changes directly to my GitHub repository 'riaz472/search.engine' on the 'main' branch using Git.
+
+Let's begin. Review the project repository files first, fix the configuration paths, and let me know when you are ready to compile and push.

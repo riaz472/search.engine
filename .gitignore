@@ -27,3 +27,6 @@ searx/version_frozen.py
 .dir-locals.el
 
 .python-version
+
+# Large binary data files — not needed in git
+searx/data/lid.176.ftz

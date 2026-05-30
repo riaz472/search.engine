@@ -804,7 +804,7 @@ engines:
     # add "list" to the array to get results in the results list
     display_type: ["infobox"]
     categories: [general]
-    disabled: true
+    inactive: true
 
   - name: duckduckgo
     engine: duckduckgo
@@ -1847,7 +1847,7 @@ engines:
   - name: radio browser
     engine: radio_browser
     shortcut: rb
-    disabled: true
+    inactive: true
 
   - name: reddit
     engine: reddit
