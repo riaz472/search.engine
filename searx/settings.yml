@@ -102,7 +102,7 @@ server:
   # If your instance owns a /etc/searxng/settings.yml file, then set the following
   # values there.
 
-  secret_key: "ultrasecretkey"  # Is overwritten by ${SEARXNG_SECRET}
+  secret_key: "DJjO4FElYrYWzsuC0gU-zWnNZaour1NTSUCqsV_4dvo"  # Is overwritten by ${SEARXNG_SECRET}
   # Proxy image results through SearXNG. Is overwritten by ${SEARXNG_IMAGE_PROXY}
   image_proxy: false
   # 1.0 and 1.1 are supported
@@ -412,6 +412,7 @@ engines:
     categories: onions
     enable_http: true
     shortcut: ah
+    disabled: true
 
   - name: anaconda
     engine: xpath
@@ -803,6 +804,7 @@ engines:
     # add "list" to the array to get results in the results list
     display_type: ["infobox"]
     categories: [general]
+    disabled: true
 
   - name: duckduckgo
     engine: duckduckgo
@@ -1845,6 +1847,7 @@ engines:
   - name: radio browser
     engine: radio_browser
     shortcut: rb
+    disabled: true
 
   - name: reddit
     engine: reddit
@@ -2094,6 +2097,7 @@ engines:
     categories: onions
     enable_http: true
     shortcut: tch
+    disabled: true
 
   # TubeArchivist is a self-hosted Youtube archivist software.
   # https://docs.searxng.org/dev/engines/online/tubearchivist.html
