@@ -370,6 +370,113 @@ html {
   }
 }
 
+// ─── Hide gear icon ───────────────────────────────────────────────────────────
+
+.nexus-gear-hidden {
+  display: none !important;
+}
+
+// ─── Three-Dots top-left menu button ──────────────────────────────────────────
+
+.nexus-dots-btn {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 2.4rem;
+  height: 2.4rem;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 240, 255, 0.15);
+  background: #0e1018;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+
+  span {
+    display: block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #00f0ff;
+    transition: transform 0.2s, background 0.2s;
+    box-shadow: 0 0 6px rgba(0, 240, 255, 0.5);
+  }
+
+  &:hover,
+  &.nexus-dots-btn--open {
+    border-color: rgba(0, 240, 255, 0.45);
+    background: #131420;
+    box-shadow: 0 0 16px rgba(0, 240, 255, 0.18), 0 2px 8px rgba(0, 0, 0, 0.4);
+
+    span {
+      background: #00f0ff;
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.85);
+    }
+  }
+}
+
+// ─── Three-Dots dropdown panel ────────────────────────────────────────────────
+
+.nexus-dots-dropdown {
+  position: fixed;
+  top: 3.8rem;
+  left: 1rem;
+  z-index: 1099;
+  min-width: 175px;
+  background: #0e1018;
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: 10px;
+  box-shadow:
+    0 0 0 1px rgba(0, 240, 255, 0.06),
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(0, 240, 255, 0.06);
+  padding: 0.45rem 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px) scale(0.97);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+
+  &.nexus-dots-dropdown--open {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.nexus-dots-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem 1rem;
+  color: #c5c6c7 !important;
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none !important;
+  transition: background 0.15s, color 0.15s;
+
+  &:hover {
+    background: rgba(0, 240, 255, 0.06);
+    color: #00f0ff !important;
+
+    .nexus-dots-icon {
+      stroke: #00f0ff;
+    }
+  }
+}
+
+.nexus-dots-icon {
+  width: 1rem;
+  height: 1rem;
+  stroke: #6c7a8d;
+  flex-shrink: 0;
+  transition: stroke 0.15s;
+}
+
 // ─── Category pills / links-on-top nav ────────────────────────────────────────
 
 #links_on_top {
@@ -417,6 +524,166 @@ footer.nexus-footer {
 
   &:hover svg {
     filter: drop-shadow(0 0 4px #ff007f);
+  }
+}
+
+// ─── Preferences page — Nexus branding header ─────────────────────────────────
+
+.nexus-prefs-brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none !important;
+}
+
+.nexus-prefs-brand-text {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #00f0ff;
+  text-shadow:
+    0 0 10px #00f0ff,
+    0 0 28px rgba(0, 240, 255, 0.5),
+    0 0 55px rgba(0, 240, 255, 0.2);
+  font-family: "Segoe UI", "Inter", system-ui, sans-serif;
+  transition: text-shadow 0.2s;
+
+  &:hover {
+    text-shadow:
+      0 0 14px #00f0ff,
+      0 0 40px rgba(0, 240, 255, 0.65),
+      0 0 70px rgba(0, 240, 255, 0.28);
+  }
+}
+
+// ─── Preferences page — solid dark background + card styling ──────────────────
+
+#main_preferences {
+  background: #0b0c10 !important;
+
+  h1 {
+    color: #00f0ff !important;
+    font-size: 1.4rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    text-shadow: 0 0 12px rgba(0, 240, 255, 0.35) !important;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.12) !important;
+    padding-bottom: 0.75rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .tabs {
+    background: transparent !important;
+  }
+
+  input[type="radio"] + label,
+  label[role="tab"] {
+    background: #0e1018 !important;
+    border: 1px solid rgba(0, 240, 255, 0.1) !important;
+    color: #8a9ab0 !important;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+
+    &:hover {
+      color: #00f0ff !important;
+      border-color: rgba(0, 240, 255, 0.3) !important;
+    }
+  }
+
+  input[type="radio"]:checked + label {
+    background: #131420 !important;
+    border-color: rgba(0, 240, 255, 0.45) !important;
+    color: #00f0ff !important;
+  }
+
+  section[role="tabpanel"] {
+    background: #0b0c10 !important;
+    border: 1px solid rgba(0, 240, 255, 0.08) !important;
+  }
+
+  fieldset {
+    background: #14151c !important;
+    border: 1px solid rgba(0, 240, 255, 0.1) !important;
+    border-radius: 10px !important;
+    margin: 0 0 0.75rem 0 !important;
+    padding: 0.9rem 1.1rem !important;
+  }
+
+  legend {
+    color: #c5c6c7 !important;
+    font-weight: 600 !important;
+    font-size: 0.88rem !important;
+    letter-spacing: 0.03em !important;
+    padding: 0 0.4rem !important;
+  }
+
+  .description {
+    color: #6c7a8d !important;
+    font-size: 0.82rem !important;
+    line-height: 1.6 !important;
+  }
+
+  select,
+  input[type="text"],
+  input[type="number"] {
+    background: #0e1018 !important;
+    color: #c5c6c7 !important;
+    border: 1px solid rgba(0, 240, 255, 0.15) !important;
+    border-radius: 6px !important;
+
+    &:focus {
+      border-color: rgba(0, 240, 255, 0.45) !important;
+      outline: none !important;
+      box-shadow: 0 0 0 2px rgba(0, 240, 255, 0.1) !important;
+    }
+  }
+
+  table {
+    background: transparent !important;
+
+    th {
+      color: #6c7a8d !important;
+      font-size: 0.78rem !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.06em !important;
+      border-bottom: 1px solid rgba(0, 240, 255, 0.08) !important;
+    }
+
+    td {
+      color: #c5c6c7 !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+    }
+
+    tr.pref-group th,
+    div.pref-group {
+      background: #0d0e16 !important;
+      color: #00f0ff !important;
+      font-size: 0.78rem !important;
+      letter-spacing: 0.06em !important;
+      text-transform: uppercase !important;
+    }
+  }
+
+  .dialog-warning-block {
+    background: rgba(0, 240, 255, 0.04) !important;
+    border: 1px solid rgba(0, 240, 255, 0.18) !important;
+    border-radius: 8px !important;
+    color: #c5c6c7 !important;
+    padding: 0.9rem 1.1rem !important;
+    margin-bottom: 1.2rem !important;
+  }
+}
+
+// ─── Preferences page header (page_with_header) ───────────────────────────────
+
+.page_with_header {
+  header,
+  & > a:first-child {
+    background: transparent !important;
+  }
+
+  .nexus-prefs-brand {
+    margin-left: 3.6rem;
   }
 }
 

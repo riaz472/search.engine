@@ -40,6 +40,25 @@
         </div>
     {% endif %}
 
+    <!-- ── Three-Dots Top-Left Menu ───────────────── -->
+    <div class="nexus-dots-btn" id="nexus-dots-btn" onclick="nexusDotsToggle()" aria-label="Menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nexus-dots-dropdown" id="nexus-dots-dropdown" role="menu">
+      <a href="{{ url_for('preferences') }}" class="nexus-dots-item" role="menuitem">
+        <svg class="nexus-dots-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Preferences
+      </a>
+      <a href="#" class="nexus-dots-item" onclick="nexusDotsClose(); nexusModal('about'); return false;" role="menuitem">
+        <svg class="nexus-dots-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        About
+      </a>
+      <a href="#" class="nexus-dots-item" onclick="nexusDotsClose(); nexusModal('feedback'); return false;" role="menuitem">
+        <svg class="nexus-dots-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Feedback
+      </a>
+    </div>
+
     <nav id="links_on_top">
       {%- from 'simple/icons.html' import icon_big -%}
       {%- block linkto_about -%}
@@ -48,9 +67,9 @@
       <a href="#" class="nexus-header-link nexus-feedback-link" onclick="nexusModal('feedback'); return false;" aria-label="Send Feedback">{{ icon_big('chatbubble') }}<span>Feedback</span></a>
       {%- block linkto_preferences -%}
         {%- if request.args.get('preferences') -%}
-          <a href="{{ url_for('preferences') }}?preferences={{ request.args.get('preferences') }}&preferences_preview_only=true" class="link_on_top_preferences">{{ icon_big('settings') }}<span>{{ _('Preferences') }}</span></a>
+          <a href="{{ url_for('preferences') }}?preferences={{ request.args.get('preferences') }}&preferences_preview_only=true" class="link_on_top_preferences nexus-gear-hidden">{{ icon_big('settings') }}<span>{{ _('Preferences') }}</span></a>
         {%- else -%}
-          <a href="{{ url_for('preferences') }}" class="link_on_top_preferences">{{ icon_big('settings') }}<span>{{ _('Preferences') }}</span></a>
+          <a href="{{ url_for('preferences') }}" class="link_on_top_preferences nexus-gear-hidden">{{ icon_big('settings') }}<span>{{ _('Preferences') }}</span></a>
         {%- endif -%}
       {%- endblock -%}
     </nav>
@@ -240,6 +259,37 @@
   </div>
 
   <script>
+    // ── Three-dots menu ──────────────────────────────────────────────────────
+    function nexusDotsToggle() {
+      var dd = document.getElementById('nexus-dots-dropdown');
+      var btn = document.getElementById('nexus-dots-btn');
+      if (!dd) return;
+      var open = dd.classList.contains('nexus-dots-dropdown--open');
+      if (open) {
+        dd.classList.remove('nexus-dots-dropdown--open');
+        btn.classList.remove('nexus-dots-btn--open');
+      } else {
+        dd.classList.add('nexus-dots-dropdown--open');
+        btn.classList.add('nexus-dots-btn--open');
+      }
+    }
+    function nexusDotsClose() {
+      var dd = document.getElementById('nexus-dots-dropdown');
+      var btn = document.getElementById('nexus-dots-btn');
+      if (dd) dd.classList.remove('nexus-dots-dropdown--open');
+      if (btn) btn.classList.remove('nexus-dots-btn--open');
+    }
+    document.addEventListener('click', function(e) {
+      var btn = document.getElementById('nexus-dots-btn');
+      var dd = document.getElementById('nexus-dots-dropdown');
+      if (btn && dd && !btn.contains(e.target) && !dd.contains(e.target)) {
+        nexusDotsClose();
+      }
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') nexusDotsClose();
+    });
+
     // ── Modal helpers ────────────────────────────────────────────────────────
     function nexusModal(id) {
       document.querySelectorAll('.nexus-modal').forEach(function(m){ m.classList.remove('nexus-modal--open'); });
