@@ -1,29 +1,51 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// Nexus Search — Custom Footer, Modals & Branding
+// Nexus Search — Footer, Modals, About, Support, Feedback
+
+// ─── Header Feedback Link ─────────────────────────────────────────────────────
+
+.nexus-feedback-link {
+  color: var(--color-search-font);
+
+  svg {
+    color: #ff007f;
+  }
+
+  &:hover svg {
+    filter: drop-shadow(0 0 4px #ff007f);
+  }
+}
 
 // ─── Footer ───────────────────────────────────────────────────────────────────
 
 footer.nexus-footer {
   clear: both;
-  min-height: 5rem;
-  padding: 1.4rem 1rem;
+  padding: 1.2rem 1rem 1rem 1rem;
   width: 100%;
   text-align: center;
   background-color: var(--color-footer-background);
-  border-top: 1px solid #1e2230;
-  overflow: hidden;
+  border-top: 1px solid #1a1d2a;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.55rem;
+}
+
+.nexus-footer-links {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  order: 1;
 }
 
 .nexus-footer-credit {
-  font-size: 0.82em;
-  color: #6c7a8d;
+  font-size: 0.78em;
+  color: #4a5568;
   letter-spacing: 0.04em;
   margin: 0;
   padding: 0;
+  order: 2;
 }
 
 .nexus-author {
@@ -33,19 +55,11 @@ footer.nexus-footer {
   text-shadow: 0 0 8px rgb(0 240 255 / 40%);
 }
 
-.nexus-footer-links {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
 .nexus-footer-link {
-  font-size: 0.78em;
-  color: #6c7a8d;
+  font-size: 0.72em;
+  color: #4a5568;
   text-decoration: none;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   padding: 0.1rem 0;
   border-bottom: 1px solid transparent;
@@ -54,13 +68,13 @@ footer.nexus-footer {
   &:hover {
     color: #00f0ff;
     border-bottom-color: #00f0ff;
-    text-shadow: 0 0 8px rgb(0 240 255 / 50%);
+    text-shadow: 0 0 8px rgb(0 240 255 / 45%);
   }
 }
 
 .nexus-footer-sep {
-  color: #2a2e40;
-  font-size: 0.85em;
+  color: #1e2230;
+  font-size: 0.8em;
   user-select: none;
 }
 
@@ -70,8 +84,8 @@ footer.nexus-footer {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgb(0 0 0 / 75%);
-  backdrop-filter: blur(3px);
+  background: rgb(0 0 0 / 78%);
+  backdrop-filter: blur(4px);
   z-index: 9000;
   cursor: pointer;
 }
@@ -89,22 +103,20 @@ footer.nexus-footer {
   left: 50%;
   transform: translate(-50%, -50%) scale(0.96);
   z-index: 9100;
-  width: min(680px, 94vw);
-  max-height: 85vh;
+  width: min(700px, 95vw);
+  max-height: 88vh;
   overflow-y: auto;
   background: #0e1018;
   border: 1px solid #1e2230;
   border-top: 2px solid #00f0ff;
   border-radius: 0.6rem;
   box-shadow:
-    0 0 0 1px rgb(0 240 255 / 10%),
-    0 0 40px rgb(0 240 255 / 12%),
-    0 24px 60px rgb(0 0 0 / 70%);
+    0 0 0 1px rgb(0 240 255 / 8%),
+    0 0 50px rgb(0 240 255 / 10%),
+    0 28px 70px rgb(0 0 0 / 75%);
   padding: 2rem 2rem 1.8rem 2rem;
   opacity: 0;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-
-  // Scrollbar styling
+  transition: opacity 0.22s ease, transform 0.22s ease;
   scrollbar-width: thin;
   scrollbar-color: #1e2230 #0b0c10;
 }
@@ -142,28 +154,27 @@ footer.nexus-footer {
 }
 
 .nexus-modal-title {
-  font-size: 1.3rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #00f0ff;
-  text-shadow: 0 0 12px rgb(0 240 255 / 40%);
+  text-shadow: 0 0 14px rgb(0 240 255 / 40%);
   margin: 0 0 1.4rem 0;
-  padding: 0;
-  padding-right: 2rem;
+  padding-right: 2.5rem;
 }
 
 .nexus-modal-lead {
   font-size: 0.95rem;
   color: #c5c6c7;
   margin: 0 0 1.2rem 0;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .nexus-modal-body {
   font-size: 0.9rem;
   color: #8a9ab0;
-  line-height: 1.7;
+  line-height: 1.72;
 
   strong {
     color: #c5c6c7;
@@ -177,17 +188,17 @@ footer.nexus-footer {
   margin: 0 0 1.2rem 0;
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 0.6rem;
 }
 
 .nexus-modal-list li {
   display: flex;
-  gap: 0.6rem;
+  gap: 0.7rem;
   align-items: flex-start;
-  padding: 0.6rem 0.8rem;
+  padding: 0.55rem 0.9rem;
   background: rgb(0 240 255 / 3%);
   border-left: 2px solid #1e2230;
-  border-radius: 0 0.3rem 0.3rem 0;
+  border-radius: 0 0.35rem 0.35rem 0;
   transition: border-color 0.2s, background 0.2s;
 
   &:hover {
@@ -198,18 +209,300 @@ footer.nexus-footer {
 
 .nexus-bullet {
   color: #00f0ff;
-  font-size: 0.75rem;
-  margin-top: 0.2rem;
+  font-size: 0.72rem;
+  margin-top: 0.25rem;
   flex-shrink: 0;
 }
 
 .nexus-modal-note {
-  font-size: 0.78rem;
-  color: #4a5568;
+  font-size: 0.77rem;
+  color: #3a4558;
   margin: 0;
-  border-top: 1px solid #1e2230;
+  border-top: 1px solid #1a1d2a;
   padding-top: 1rem;
   font-style: italic;
+  line-height: 1.55;
+}
+
+// ─── About Us ─────────────────────────────────────────────────────────────────
+
+.nexus-about-hero {
+  text-align: center;
+  padding: 1.6rem 1rem 1.4rem 1rem;
+  margin-bottom: 1.4rem;
+  background: radial-gradient(ellipse at 50% 0%, rgb(0 240 255 / 8%) 0%, transparent 70%);
+  border-bottom: 1px solid #1a1d2a;
+}
+
+.nexus-about-wordmark {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: #00f0ff;
+  text-shadow:
+    0 0 10px #00f0ff,
+    0 0 30px rgb(0 240 255 / 50%),
+    0 0 60px rgb(0 240 255 / 20%);
+  margin-bottom: 0.4rem;
+}
+
+.nexus-about-tagline {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #4a5568;
+}
+
+.nexus-about-mission {
+  background: rgb(0 240 255 / 4%);
+  border: 1px solid #1e2230;
+  border-left: 3px solid #00f0ff;
+  border-radius: 0 0.4rem 0.4rem 0;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1.4rem;
+  font-size: 0.93rem;
+  color: #c5c6c7;
+  line-height: 1.7;
+
+  p {
+    margin: 0;
+  }
+}
+
+.nexus-about-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+  margin-bottom: 1.4rem;
+}
+
+.nexus-pillar {
+  background: #0b0c10;
+  border: 1px solid #1e2230;
+  border-radius: 0.4rem;
+  padding: 1rem 0.85rem;
+  text-align: center;
+  transition: border-color 0.2s, background 0.2s;
+
+  &:hover {
+    border-color: rgb(0 240 255 / 30%);
+    background: rgb(0 240 255 / 4%);
+  }
+}
+
+.nexus-pillar-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.nexus-pillar-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #00f0ff;
+  margin-bottom: 0.4rem;
+}
+
+.nexus-pillar-text {
+  font-size: 0.73rem;
+  color: #6c7a8d;
+  line-height: 1.5;
+}
+
+.nexus-about-author-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: rgb(0 240 255 / 4%);
+  border: 1px solid #1e2230;
+  border-top: 2px solid rgb(0 240 255 / 30%);
+  border-radius: 0.5rem;
+  padding: 1rem 1.2rem;
+  flex-wrap: wrap;
+}
+
+.nexus-about-author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.nexus-about-author-name {
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: #c5c6c7;
+  letter-spacing: 0.04em;
+}
+
+.nexus-about-author-role {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: #6c7a8d;
+}
+
+.nexus-about-author-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.nexus-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 1rem;
+  background: #00f0ff;
+  color: #0b0c10;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 0.35rem;
+  border: 1px solid #00f0ff;
+  transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+
+  &:hover {
+    background: #00d4e0;
+    box-shadow: 0 0 16px rgb(0 240 255 / 45%);
+    color: #0b0c10;
+  }
+
+  &.nexus-cta-btn--outline {
+    background: transparent;
+    color: #00f0ff;
+
+    &:hover {
+      background: rgb(0 240 255 / 10%);
+      box-shadow: 0 0 12px rgb(0 240 255 / 25%);
+      color: #00f0ff;
+    }
+  }
+}
+
+// ─── Feedback ─────────────────────────────────────────────────────────────────
+
+.nexus-feedback-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 1.2rem;
+}
+
+.nexus-feedback-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.1rem;
+  background: #0b0c10;
+  border: 1px solid #1e2230;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    border-color: #00f0ff;
+    background: rgb(0 240 255 / 5%);
+    box-shadow: 0 0 20px rgb(0 240 255 / 14%);
+  }
+}
+
+.nexus-feedback-icon {
+  font-size: 1.6rem;
+  width: 2.5rem;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.nexus-feedback-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.nexus-feedback-method {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #c5c6c7;
+  letter-spacing: 0.04em;
+}
+
+.nexus-feedback-desc {
+  font-size: 0.78rem;
+  color: #6c7a8d;
+  line-height: 1.4;
+}
+
+.nexus-feedback-handle {
+  font-size: 0.78rem;
+  color: #00f0ff;
+  font-weight: 500;
+  margin-top: 0.1rem;
+}
+
+.nexus-feedback-arrow {
+  font-size: 1.1rem;
+  color: #2a3450;
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+
+.nexus-feedback-card:hover .nexus-feedback-arrow {
+  color: #00f0ff;
+}
+
+// ─── Support ──────────────────────────────────────────────────────────────────
+
+.nexus-support-mission {
+  font-size: 0.92rem;
+  color: #c5c6c7;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+
+  p { margin: 0; }
+}
+
+.nexus-support-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  background: rgb(255 0 127 / 5%);
+  border: 1px solid rgb(255 0 127 / 20%);
+  border-left: 3px solid #ff007f;
+  border-radius: 0 0.4rem 0.4rem 0;
+  padding: 0.9rem 1rem;
+  margin-bottom: 1.3rem;
+}
+
+.nexus-support-banner-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.nexus-support-banner-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+
+  strong {
+    color: #ff007f;
+    display: block;
+    font-size: 0.88rem;
+    letter-spacing: 0.03em;
+  }
+
+  span {
+    color: #8a9ab0;
+    line-height: 1.5;
+  }
 }
 
 // ─── Contact Card ─────────────────────────────────────────────────────────────
@@ -217,39 +510,39 @@ footer.nexus-footer {
 .nexus-contact-card {
   background: rgb(0 240 255 / 4%);
   border: 1px solid #1e2230;
-  border-top: 2px solid rgb(0 240 255 / 40%);
+  border-top: 2px solid rgb(0 240 255 / 35%);
   border-radius: 0.5rem;
-  padding: 1.4rem;
-  margin: 0 0 1.2rem 0;
+  padding: 1.3rem;
+  margin-bottom: 1.2rem;
 }
 
 .nexus-contact-name {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #c5c6c7;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   margin-bottom: 0.2rem;
 }
 
 .nexus-contact-role {
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   color: #6c7a8d;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.1rem;
 }
 
 .nexus-contact-links {
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 0.65rem;
 }
 
 .nexus-contact-item {
   display: flex;
   align-items: center;
   gap: 0.9rem;
-  padding: 0.8rem 1rem;
+  padding: 0.75rem 1rem;
   background: #0b0c10;
   border: 1px solid #1e2230;
   border-radius: 0.4rem;
@@ -260,19 +553,19 @@ footer.nexus-footer {
   &:hover {
     border-color: #00f0ff;
     background: rgb(0 240 255 / 5%);
-    box-shadow: 0 0 16px rgb(0 240 255 / 15%);
+    box-shadow: 0 0 16px rgb(0 240 255 / 14%);
   }
 }
 
 .nexus-contact-icon {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   width: 2rem;
   text-align: center;
   flex-shrink: 0;
 }
 
 .nexus-contact-label {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: #6c7a8d;
@@ -281,7 +574,7 @@ footer.nexus-footer {
 }
 
 .nexus-contact-value {
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   color: #00f0ff;
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -290,9 +583,28 @@ footer.nexus-footer {
 
 // ─── Mobile ───────────────────────────────────────────────────────────────────
 
+@media screen and (max-width: @tablet) {
+  .nexus-about-pillars {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media screen and (max-width: @phone) {
   .nexus-modal {
-    padding: 1.4rem 1.2rem 1.4rem 1.2rem;
+    padding: 1.4rem 1rem 1.4rem 1rem;
+  }
+
+  .nexus-about-pillars {
+    grid-template-columns: 1fr;
+  }
+
+  .nexus-about-author-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nexus-feedback-card {
+    align-items: flex-start;
   }
 
   .nexus-contact-item {
@@ -302,5 +614,13 @@ footer.nexus-footer {
 
   .nexus-contact-label {
     min-width: unset;
+  }
+
+  .nexus-footer-links {
+    gap: 0.35rem;
+  }
+
+  .nexus-footer-link {
+    font-size: 0.68em;
   }
 }

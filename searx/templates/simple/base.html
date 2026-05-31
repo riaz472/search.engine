@@ -43,13 +43,9 @@
     <nav id="links_on_top">
       {%- from 'simple/icons.html' import icon_big -%}
       {%- block linkto_about -%}
-        <a href="{{ url_for('info', pagename='about') }}" class="link_on_top_about">{{ icon_big('information-circle') }}<span>{{ _('About') }}</span></a>
+        <a href="#" class="link_on_top_about nexus-header-link" onclick="nexusModal('about'); return false;" aria-label="About Nexus Search">{{ icon_big('information-circle') }}<span>About</span></a>
       {%- endblock -%}
-      {%- block linkto_donate -%}
-        {%- if donation_url -%}
-        <a href="{{ donation_url }}" class="link_on_top_donate">{{ icon_big('heart') }}<span>{{ _('Donate') }}</span></a>
-        {%- endif -%}
-      {%- endblock -%}
+      <a href="#" class="nexus-header-link nexus-feedback-link" onclick="nexusModal('feedback'); return false;" aria-label="Send Feedback">{{ icon_big('chatbubble') }}<span>Feedback</span></a>
       {%- block linkto_preferences -%}
         {%- if request.args.get('preferences') -%}
           <a href="{{ url_for('preferences') }}?preferences={{ request.args.get('preferences') }}&preferences_preview_only=true" class="link_on_top_preferences">{{ icon_big('settings') }}<span>{{ _('Preferences') }}</span></a>
@@ -68,14 +64,18 @@
        NEXUS FOOTER
   ════════════════════════════════════════════════ -->
   <footer class="nexus-footer">
-    <p class="nexus-footer-credit">Developed &amp; Maintained by <span class="nexus-author">Riaz Ali Shahani</span></p>
     <nav class="nexus-footer-links">
+      <a href="#" class="nexus-footer-link" onclick="nexusModal('about'); return false;">About Us</a>
+      <span class="nexus-footer-sep">·</span>
       <a href="#" class="nexus-footer-link" onclick="nexusModal('privacy'); return false;">Privacy Policy</a>
       <span class="nexus-footer-sep">·</span>
-      <a href="#" class="nexus-footer-link" onclick="nexusModal('terms'); return false;">Terms of Service</a>
+      <a href="#" class="nexus-footer-link" onclick="nexusModal('terms'); return false;">Terms</a>
       <span class="nexus-footer-sep">·</span>
-      <a href="#" class="nexus-footer-link" onclick="nexusModal('contact'); return false;">Contact Us</a>
+      <a href="#" class="nexus-footer-link" onclick="nexusModal('feedback'); return false;">Feedback</a>
+      <span class="nexus-footer-sep">·</span>
+      <a href="#" class="nexus-footer-link" onclick="nexusModal('support'); return false;">Support &amp; Contact</a>
     </nav>
+    <p class="nexus-footer-credit">Developed &amp; Maintained by <span class="nexus-author">Riaz Ali Shahani</span></p>
   </footer>
 
   <!-- ═══════════════════════════════════════════════
@@ -83,50 +83,141 @@
   ════════════════════════════════════════════════ -->
   <div class="nexus-overlay" id="nexus-overlay" onclick="nexusCloseAll()"></div>
 
-  <!-- Privacy Policy Modal -->
+  <!-- ── About Us Modal ─────────────────────────── -->
+  <div class="nexus-modal" id="nexus-modal-about" role="dialog" aria-modal="true" aria-label="About Us">
+    <button class="nexus-modal-close" onclick="nexusCloseAll()" aria-label="Close">&#10005;</button>
+    <h2 class="nexus-modal-title">About Us</h2>
+    <div class="nexus-modal-body">
+
+      <div class="nexus-about-hero">
+        <div class="nexus-about-wordmark">NEXUS SEARCH</div>
+        <div class="nexus-about-tagline">Decentralized · Secure · Anonymous</div>
+      </div>
+
+      <div class="nexus-about-mission">
+        <p>Nexus Search is an independent, decentralized privacy initiative engineered by <strong>Riaz Ali Shahani</strong>. Our mission is to break down big-tech data monopoly and return data ownership back to the users by providing an <strong>encrypted, zero-logging search experience</strong>.</p>
+      </div>
+
+      <div class="nexus-about-pillars">
+        <div class="nexus-pillar">
+          <div class="nexus-pillar-icon">&#128274;</div>
+          <div class="nexus-pillar-title">Zero Logs</div>
+          <div class="nexus-pillar-text">No query, IP, or session data is ever stored or processed on our infrastructure.</div>
+        </div>
+        <div class="nexus-pillar">
+          <div class="nexus-pillar-icon">&#127760;</div>
+          <div class="nexus-pillar-title">Decentralized</div>
+          <div class="nexus-pillar-text">Results are aggregated from independent search engines in real-time with no single point of data control.</div>
+        </div>
+        <div class="nexus-pillar">
+          <div class="nexus-pillar-icon">&#128172;</div>
+          <div class="nexus-pillar-title">Community-First</div>
+          <div class="nexus-pillar-text">Built without venture capital or data monetization. Operated purely in the public interest.</div>
+        </div>
+      </div>
+
+      <div class="nexus-about-author-card">
+        <div class="nexus-about-author-info">
+          <span class="nexus-about-author-name">Riaz Ali Shahani</span>
+          <span class="nexus-about-author-role">Founder, Developer &amp; Maintainer</span>
+        </div>
+        <div class="nexus-about-author-actions">
+          <a class="nexus-cta-btn" href="https://wa.me/923301458939" target="_blank" rel="noopener noreferrer">&#128172; WhatsApp</a>
+          <a class="nexus-cta-btn nexus-cta-btn--outline" href="mailto:riazalishahani485@gmail.com" rel="noopener noreferrer">&#9993; Email</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Privacy Policy Modal ───────────────────── -->
   <div class="nexus-modal" id="nexus-modal-privacy" role="dialog" aria-modal="true" aria-label="Privacy Policy">
     <button class="nexus-modal-close" onclick="nexusCloseAll()" aria-label="Close">&#10005;</button>
     <h2 class="nexus-modal-title">Privacy Policy</h2>
     <div class="nexus-modal-body">
       <p class="nexus-modal-lead">Nexus Search is engineered around a single principle: <strong>your search is yours alone.</strong></p>
       <ul class="nexus-modal-list">
-        <li><span class="nexus-bullet">▸</span> <strong>Zero Logs.</strong> We do not record, store, or retain any search queries, IP addresses, session data, or browsing history — ever.</li>
-        <li><span class="nexus-bullet">▸</span> <strong>No Tracking.</strong> There are no cookies for tracking, no analytics scripts, no fingerprinting, and no user profiling of any kind.</li>
-        <li><span class="nexus-bullet">▸</span> <strong>No Third-Party Data Sharing.</strong> Your queries are never sold, shared, or transmitted to advertisers, data brokers, or any third party.</li>
-        <li><span class="nexus-bullet">▸</span> <strong>Decentralized Routing.</strong> Searches are distributed across multiple independent engines simultaneously so no single source can build a profile on you.</li>
-        <li><span class="nexus-bullet">▸</span> <strong>Anonymous by Design.</strong> Nexus Search acts as an anonymous proxy between you and search providers. They see the engine, not you.</li>
-        <li><span class="nexus-bullet">▸</span> <strong>No Account Required.</strong> Full functionality is available with no registration, no sign-in, and no personal information collected.</li>
-        <li><span class="nexus-bullet">▸</span> <strong>Preferences Stored Locally.</strong> Any optional settings you configure are saved in your browser only, never on our servers.</li>
+        <li><span class="nexus-bullet">▸</span><div><strong>Zero Logs.</strong> We do not record, store, or retain any search queries, IP addresses, session data, or browsing history — ever.</div></li>
+        <li><span class="nexus-bullet">▸</span><div><strong>No Tracking.</strong> There are no tracking cookies, analytics scripts, fingerprinting, or user profiling of any kind.</div></li>
+        <li><span class="nexus-bullet">▸</span><div><strong>No Third-Party Data Sharing.</strong> Your queries are never sold, shared, or transmitted to advertisers or data brokers.</div></li>
+        <li><span class="nexus-bullet">▸</span><div><strong>Decentralized Routing.</strong> Searches are distributed across multiple independent engines simultaneously so no single source can profile you.</div></li>
+        <li><span class="nexus-bullet">▸</span><div><strong>Anonymous by Design.</strong> Nexus Search acts as an anonymous proxy. Search providers see the engine, not you.</div></li>
+        <li><span class="nexus-bullet">▸</span><div><strong>No Account Required.</strong> Full functionality is available with no registration, no sign-in, and no personal information collected.</div></li>
+        <li><span class="nexus-bullet">▸</span><div><strong>Preferences Stored Locally.</strong> Any settings you configure are saved in your browser only, never on our servers.</div></li>
       </ul>
       <p class="nexus-modal-note">By using Nexus Search, you acknowledge and agree to this privacy-first operating model.</p>
     </div>
   </div>
 
-  <!-- Terms of Service Modal -->
+  <!-- ── Terms of Service Modal ─────────────────── -->
   <div class="nexus-modal" id="nexus-modal-terms" role="dialog" aria-modal="true" aria-label="Terms of Service">
     <button class="nexus-modal-close" onclick="nexusCloseAll()" aria-label="Close">&#10005;</button>
     <h2 class="nexus-modal-title">Terms of Service</h2>
     <div class="nexus-modal-body">
       <p class="nexus-modal-lead">By accessing Nexus Search, you agree to the following terms.</p>
       <ul class="nexus-modal-list">
-        <li><span class="nexus-bullet">▸</span> <strong>Intended Use.</strong> Nexus Search is provided as a free, privacy-respecting search aggregation tool for personal, lawful use only.</li>
-        <li><span class="nexus-bullet">▸</span> <strong>Encrypted Routing.</strong> All queries are transmitted over HTTPS with strict no-referrer headers, ensuring your connection is protected end-to-end.</li>
-        <li><span class="nexus-bullet">▸</span> <strong>Aggregated Results.</strong> Search results are sourced from multiple independent search engines. Nexus Search does not control the content of third-party results and accepts no liability for external content.</li>
-        <li><span class="nexus-bullet">▸</span> <strong>No Warranty.</strong> The service is provided "as-is" with no guarantee of uptime, accuracy, or completeness of results.</li>
-        <li><span class="nexus-bullet">▸</span> <strong>Prohibited Conduct.</strong> Automated scraping, abuse of the search infrastructure, or use of this service for any illegal purpose is strictly prohibited.</li>
-        <li><span class="nexus-bullet">▸</span> <strong>No Liability.</strong> The operator of Nexus Search shall not be held liable for any direct or indirect damages arising from use of this service.</li>
-        <li><span class="nexus-bullet">▸</span> <strong>Changes.</strong> These terms may be updated at any time. Continued use of the service constitutes acceptance of any revised terms.</li>
+        <li><span class="nexus-bullet">▸</span><div><strong>Intended Use.</strong> Nexus Search is provided as a free, privacy-respecting search aggregation tool for personal, lawful use only.</div></li>
+        <li><span class="nexus-bullet">▸</span><div><strong>Encrypted Routing.</strong> All queries are transmitted over HTTPS with strict no-referrer headers, protecting your connection end-to-end.</div></li>
+        <li><span class="nexus-bullet">▸</span><div><strong>Aggregated Results.</strong> Results are sourced from multiple independent engines. Nexus Search does not control third-party content and accepts no liability for it.</div></li>
+        <li><span class="nexus-bullet">▸</span><div><strong>No Warranty.</strong> The service is provided "as-is" with no guarantee of uptime, accuracy, or completeness of results.</div></li>
+        <li><span class="nexus-bullet">▸</span><div><strong>Prohibited Conduct.</strong> Automated scraping, infrastructure abuse, or use for any illegal purpose is strictly prohibited.</div></li>
+        <li><span class="nexus-bullet">▸</span><div><strong>No Liability.</strong> The operator shall not be held liable for any direct or indirect damages arising from use of this service.</div></li>
+        <li><span class="nexus-bullet">▸</span><div><strong>Changes.</strong> These terms may be updated at any time. Continued use constitutes acceptance of any revised terms.</div></li>
       </ul>
       <p class="nexus-modal-note">If you do not agree to these terms, please discontinue use of Nexus Search.</p>
     </div>
   </div>
 
-  <!-- Contact Us Modal -->
-  <div class="nexus-modal" id="nexus-modal-contact" role="dialog" aria-modal="true" aria-label="Contact Us">
+  <!-- ── Feedback Modal ─────────────────────────── -->
+  <div class="nexus-modal" id="nexus-modal-feedback" role="dialog" aria-modal="true" aria-label="Feedback">
     <button class="nexus-modal-close" onclick="nexusCloseAll()" aria-label="Close">&#10005;</button>
-    <h2 class="nexus-modal-title">Contact Us</h2>
+    <h2 class="nexus-modal-title">Send Feedback</h2>
     <div class="nexus-modal-body">
-      <p class="nexus-modal-lead">Reach out directly to the developer and maintainer of Nexus Search.</p>
+      <p class="nexus-modal-lead">Your feedback helps make Nexus Search better. Send it directly — no forms, no middlemen, no data collected.</p>
+
+      <div class="nexus-feedback-options">
+        <a class="nexus-feedback-card" href="https://wa.me/923301458939?text=Nexus%20Search%20Feedback%3A%20" target="_blank" rel="noopener noreferrer">
+          <div class="nexus-feedback-icon">&#128172;</div>
+          <div class="nexus-feedback-info">
+            <div class="nexus-feedback-method">WhatsApp Message</div>
+            <div class="nexus-feedback-desc">Tap to open a pre-addressed message to Riaz Ali Shahani. Fastest response.</div>
+            <div class="nexus-feedback-handle">+92 330 145 8939</div>
+          </div>
+          <div class="nexus-feedback-arrow">&#8599;</div>
+        </a>
+        <a class="nexus-feedback-card" href="mailto:riazalishahani485@gmail.com?subject=Nexus%20Search%20Feedback" rel="noopener noreferrer">
+          <div class="nexus-feedback-icon">&#9993;</div>
+          <div class="nexus-feedback-info">
+            <div class="nexus-feedback-method">Email</div>
+            <div class="nexus-feedback-desc">Send a detailed message, attach screenshots, or report a bug.</div>
+            <div class="nexus-feedback-handle">riazalishahani485@gmail.com</div>
+          </div>
+          <div class="nexus-feedback-arrow">&#8599;</div>
+        </a>
+      </div>
+
+      <p class="nexus-modal-note">All feedback goes directly to the developer. No ticket system. No delays. No corporate filter.</p>
+    </div>
+  </div>
+
+  <!-- ── Support & Contact Modal ────────────────── -->
+  <div class="nexus-modal" id="nexus-modal-support" role="dialog" aria-modal="true" aria-label="Support & Contact">
+    <button class="nexus-modal-close" onclick="nexusCloseAll()" aria-label="Close">&#10005;</button>
+    <h2 class="nexus-modal-title">Support &amp; Contact</h2>
+    <div class="nexus-modal-body">
+
+      <div class="nexus-support-mission">
+        <p>We operate completely <strong>without data monetization</strong>. If you love our absolute privacy model, support our infrastructure through direct peer-to-peer developer feedback or community backing.</p>
+      </div>
+
+      <div class="nexus-support-banner">
+        <div class="nexus-support-banner-icon">&#9889;</div>
+        <div class="nexus-support-banner-text">
+          <strong>No ads. No tracking. No investors.</strong>
+          <span>Nexus Search is kept alive by the conviction that privacy is a right, not a premium feature.</span>
+        </div>
+      </div>
+
       <div class="nexus-contact-card">
         <div class="nexus-contact-name">Riaz Ali Shahani</div>
         <div class="nexus-contact-role">Developer &amp; Maintainer — Nexus Search</div>
@@ -143,7 +234,8 @@
           </a>
         </div>
       </div>
-      <p class="nexus-modal-note">Response times may vary. For urgent matters, WhatsApp is preferred.</p>
+
+      <p class="nexus-modal-note">Direct contact is the primary support line. Response times may vary; WhatsApp is fastest.</p>
     </div>
   </div>
 
@@ -155,7 +247,8 @@
       if (modal && overlay) {
         modal.classList.add('nexus-modal--open');
         overlay.classList.add('nexus-overlay--open');
-        modal.querySelector('.nexus-modal-close').focus();
+        var btn = modal.querySelector('.nexus-modal-close');
+        if (btn) btn.focus();
       }
     }
     function nexusCloseAll() {
