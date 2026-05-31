@@ -10,6 +10,7 @@ packages = ["cacert", "glibcLocales", "libyaml", "xcodebuild", "zlib"]
 [userenv]
 
 [userenv.shared]
+SEARXNG_SECRET = "qOxESNxp-OeAH6LTjgmPL4IYCHVzy9_hQ0kvVDzukdU"
 
 [workflows]
 runButton = "Project"

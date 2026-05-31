@@ -1,63 +1,51 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// Nexus Search — Footer, Modals, About, Support, Feedback
+// Nexus Search — Ultra-Premium Cyber-Dark Solid Design
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// GLASSMORPHISM TRANSPARENCY SYSTEM
-// Makes html/body/main transparent so the Android WebBrowser wallpaper shows
-// through. Key UI surfaces use a frosted-glass backdrop instead.
+// SOLID CYBER-DARK BACKGROUND SYSTEM
+// Deep matte solid backgrounds — no transparency, no bleed-through.
 // ═══════════════════════════════════════════════════════════════════════════════
-
-// ─── Transparent root surfaces ────────────────────────────────────────────────
 
 html,
 body,
 main {
-  background: transparent !important;
+  background: #0b0c10 !important;
+  background-color: #0b0c10 !important;
 }
 
 html {
-  background-color: transparent !important;
+  background: #0b0c10 !important;
+  background-color: #0b0c10 !important;
 }
 
-// Phone-specific mobile background override
+// Phone-specific mobile background
 @media screen and (max-width: @phone) {
-  html {
-    background-color: transparent !important;
+  html,
+  body,
+  main {
+    background: #0b0c10 !important;
+    background-color: #0b0c10 !important;
   }
-}
-
-// ─── Glass mixins ─────────────────────────────────────────────────────────────
-
-.glass-surface() {
-  background: rgba(11, 12, 16, 0.65) !important;
-  backdrop-filter: blur(14px) saturate(1.4);
-  -webkit-backdrop-filter: blur(14px) saturate(1.4);
-}
-
-.glass-surface-light() {
-  background: rgba(13, 13, 20, 0.55) !important;
-  backdrop-filter: blur(12px) saturate(1.3);
-  -webkit-backdrop-filter: blur(12px) saturate(1.3);
 }
 
 // ─── Header / Search bar ──────────────────────────────────────────────────────
 
 #search_header {
-  .glass-surface();
-  border-bottom: 1px solid rgba(0, 240, 255, 0.08) !important;
+  background: #0d0e14 !important;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.1) !important;
 }
 
-// Make individual search input elements inherit glass surface, not solid fill
+// Search input elements — solid fill
 #q,
 #send_search,
 #clear_search {
   background: transparent !important;
 }
 
-// On mobile the focused search expands full-screen — keep glass
+// Mobile full-screen search expansion
 @media screen and (max-width: @phone) {
   #search_view:focus-within {
-    .glass-surface();
+    background: #0d0e14 !important;
     position: absolute;
     top: 0;
     height: 100%;
@@ -69,7 +57,7 @@ html {
       width: 100%;
       border-radius: 0;
       box-shadow: none;
-      background: transparent !important;
+      background: #0d0e14 !important;
 
       * {
         border: none;
@@ -85,9 +73,7 @@ html {
 
 .index .search_box,
 .search_box {
-  background: rgba(14, 16, 24, 0.6) !important;
-  backdrop-filter: blur(12px) saturate(1.4);
-  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  background: #0e1018 !important;
   border: 1px solid rgba(0, 240, 255, 0.18) !important;
 
   &:focus-within {
@@ -102,16 +88,14 @@ html {
 // ─── Autocomplete dropdown ────────────────────────────────────────────────────
 
 .autocomplete {
-  background: rgba(11, 12, 16, 0.85) !important;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(0, 240, 255, 0.12) !important;
+  background: #0d0e14 !important;
+  border: 1px solid rgba(0, 240, 255, 0.15) !important;
 }
 
 // ─── Results page header nav bar ──────────────────────────────────────────────
 
 #search {
-  background: transparent !important;
+  background: #0d0e14 !important;
 }
 
 // ─── Result card animation ────────────────────────────────────────────────────
@@ -140,10 +124,8 @@ html {
 .result {
   display: flex !important;
   flex-direction: column !important;
-  background: rgba(20, 20, 25, 0.45) !important;
-  backdrop-filter: blur(16px) saturate(1.5) !important;
-  -webkit-backdrop-filter: blur(16px) saturate(1.5) !important;
-  border: 1px solid rgba(0, 240, 255, 0.15) !important;
+  background: #14151c !important;
+  border: 1px solid rgba(0, 240, 255, 0.25) !important;
   border-radius: 16px !important;
   margin: 0 0 20px 0 !important;
   padding: 1.15rem 1.3rem !important;
@@ -175,12 +157,12 @@ html {
   }
 
   &:hover {
-    border-color: rgba(0, 240, 255, 0.32) !important;
-    background: rgba(20, 20, 30, 0.62) !important;
+    border-color: rgba(0, 240, 255, 0.45) !important;
+    background: #161720 !important;
     box-shadow:
-      0 0 0 1px rgba(0, 240, 255, 0.08),
-      0 8px 32px rgba(0, 0, 0, 0.45),
-      0 0 28px rgba(0, 240, 255, 0.07);
+      0 0 0 1px rgba(0, 240, 255, 0.1),
+      0 8px 32px rgba(0, 0, 0, 0.55),
+      0 0 28px rgba(0, 240, 255, 0.09);
     transform: translateY(-1px);
   }
 
@@ -304,7 +286,7 @@ html {
   .favicon img {
     border-radius: 4px !important;
     border: 1px solid rgba(0, 240, 255, 0.1) !important;
-    background: rgba(14, 16, 24, 0.6) !important;
+    background: #0e1018 !important;
   }
 
   // ── Cache / proxy links ───────────────────────────────────────────────────
@@ -322,7 +304,7 @@ html {
   // ── Vim-mode selected state ───────────────────────────────────────────────
   &[data-vim-selected] {
     border-color: rgba(0, 240, 255, 0.45) !important;
-    background: rgba(20, 22, 35, 0.7) !important;
+    background: #181921 !important;
     box-shadow:
       inset 0 0 0 1px rgba(0, 240, 255, 0.2),
       0 0 24px rgba(0, 240, 255, 0.08);
@@ -347,10 +329,8 @@ html {
 .category-map,
 .category-music,
 .category-social {
-  background: rgba(20, 20, 25, 0.45) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border: 1px solid rgba(0, 240, 255, 0.15) !important;
+  background: #14151c !important;
+  border: 1px solid rgba(0, 240, 255, 0.25) !important;
   border-radius: 16px !important;
   margin: 0 0 20px 0 !important;
   animation: nexus-card-in 0.45s ease both;
@@ -359,10 +339,8 @@ html {
 // ─── Answers block ────────────────────────────────────────────────────────────
 
 #answers {
-  background: rgba(14, 16, 24, 0.6) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border: 1px solid rgba(0, 240, 255, 0.18) !important;
+  background: #0e1018 !important;
+  border: 1px solid rgba(0, 240, 255, 0.2) !important;
   border-radius: 16px !important;
   margin-bottom: 20px !important;
 }
@@ -371,8 +349,8 @@ html {
 
 @media screen and (max-width: @phone) {
   .result {
-    background: rgba(20, 20, 25, 0.55) !important;
-    border: 1px solid rgba(0, 240, 255, 0.15) !important;
+    background: #14151c !important;
+    border: 1px solid rgba(0, 240, 255, 0.25) !important;
     border-radius: 14px !important;
     margin: 0 0 14px 0 !important;
     width: 100% !important;
@@ -386,8 +364,8 @@ html {
   background: transparent !important;
 
   .infobox {
-    .glass-surface-light();
-    border: 1px solid rgba(0, 240, 255, 0.08) !important;
+    background: #13141b !important;
+    border: 1px solid rgba(0, 240, 255, 0.1) !important;
     border-radius: 0.5rem;
   }
 }
@@ -395,7 +373,7 @@ html {
 // ─── Category pills / links-on-top nav ────────────────────────────────────────
 
 #links_on_top {
-  background: transparent !important;
+  background: #0d0e14 !important;
 }
 
 // ─── Pagination buttons ───────────────────────────────────────────────────────
@@ -405,13 +383,11 @@ html {
 .numbered_pagination input[type="button"],
 #pagination .previous_page button,
 #pagination .next_page button {
-  background: rgba(14, 16, 24, 0.6) !important;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: #0e1018 !important;
   border: 1px solid rgba(0, 240, 255, 0.1) !important;
 
   &:hover {
-    background: rgba(0, 240, 255, 0.12) !important;
+    background: rgba(0, 240, 255, 0.08) !important;
     border-color: rgba(0, 240, 255, 0.35) !important;
   }
 }
@@ -419,18 +395,15 @@ html {
 // ─── BackToTop button ─────────────────────────────────────────────────────────
 
 #backToTop {
-  background: rgba(11, 12, 16, 0.75) !important;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: #0b0c10 !important;
   border-color: rgba(0, 240, 255, 0.12) !important;
 }
 
 // ─── Footer ───────────────────────────────────────────────────────────────────
-// (overrides the solid background set in the section below)
 
 footer.nexus-footer {
-  .glass-surface();
-  border-top: 1px solid rgba(0, 240, 255, 0.06) !important;
+  background: #0d0e14 !important;
+  border-top: 1px solid rgba(0, 240, 255, 0.08) !important;
 }
 
 // ─── Header Feedback Link ─────────────────────────────────────────────────────
@@ -447,14 +420,13 @@ footer.nexus-footer {
   }
 }
 
-// ─── Footer ───────────────────────────────────────────────────────────────────
+// ─── Footer layout ────────────────────────────────────────────────────────────
 
 footer.nexus-footer {
   clear: both;
   padding: 1.2rem 1rem 1rem 1rem;
   width: 100%;
   text-align: center;
-  background-color: var(--color-footer-background);
   border-top: 1px solid #1a1d2a;
   display: flex;
   flex-direction: column;
@@ -517,7 +489,6 @@ footer.nexus-footer {
   position: fixed;
   inset: 0;
   background: rgb(0 0 0 / 78%);
-  backdrop-filter: blur(4px);
   z-index: 9000;
   cursor: pointer;
 }
@@ -734,12 +705,12 @@ footer.nexus-footer {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: #00f0ff;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.35rem;
 }
 
 .nexus-pillar-text {
-  font-size: 0.73rem;
-  color: #6c7a8d;
+  font-size: 0.76rem;
+  color: #5a6a80;
   line-height: 1.5;
 }
 
@@ -748,12 +719,11 @@ footer.nexus-footer {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  background: rgb(0 240 255 / 4%);
-  border: 1px solid #1e2230;
-  border-top: 2px solid rgb(0 240 255 / 30%);
-  border-radius: 0.5rem;
   padding: 1rem 1.2rem;
-  flex-wrap: wrap;
+  background: rgb(0 240 255 / 3%);
+  border: 1px solid #1e2230;
+  border-radius: 0.4rem;
+  margin-bottom: 1rem;
 }
 
 .nexus-about-author-info {
@@ -763,17 +733,16 @@ footer.nexus-footer {
 }
 
 .nexus-about-author-name {
-  font-size: 0.96rem;
+  font-size: 0.92rem;
   font-weight: 700;
   color: #c5c6c7;
   letter-spacing: 0.04em;
 }
 
 .nexus-about-author-role {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.09em;
-  color: #6c7a8d;
+  font-size: 0.75rem;
+  color: #4a5568;
+  letter-spacing: 0.03em;
 }
 
 .nexus-about-author-actions {
@@ -785,38 +754,36 @@ footer.nexus-footer {
 .nexus-cta-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.5rem 1rem;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
   background: #00f0ff;
   color: #0b0c10;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  border-radius: 0.3rem;
   text-decoration: none;
-  border-radius: 0.35rem;
-  border: 1px solid #00f0ff;
-  transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+  transition: background 0.2s, box-shadow 0.2s;
 
   &:hover {
-    background: #00d4e0;
-    box-shadow: 0 0 16px rgb(0 240 255 / 45%);
-    color: #0b0c10;
+    background: #33f5ff;
+    box-shadow: 0 0 12px rgb(0 240 255 / 40%);
   }
 
   &.nexus-cta-btn--outline {
     background: transparent;
     color: #00f0ff;
+    border: 1px solid #00f0ff;
 
     &:hover {
-      background: rgb(0 240 255 / 10%);
+      background: rgb(0 240 255 / 8%);
       box-shadow: 0 0 12px rgb(0 240 255 / 25%);
-      color: #00f0ff;
     }
   }
 }
 
-// ─── Feedback ─────────────────────────────────────────────────────────────────
+// ─── Feedback cards ───────────────────────────────────────────────────────────
 
 .nexus-feedback-options {
   display: flex;
@@ -829,33 +796,28 @@ footer.nexus-footer {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1rem 1.1rem;
-  background: #0b0c10;
+  padding: 1rem 1.2rem;
+  background: #101118;
   border: 1px solid #1e2230;
-  border-radius: 0.5rem;
+  border-radius: 0.4rem;
   text-decoration: none;
-  color: inherit;
-  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s, background 0.2s;
 
   &:hover {
-    border-color: #00f0ff;
-    background: rgb(0 240 255 / 5%);
-    box-shadow: 0 0 20px rgb(0 240 255 / 14%);
+    border-color: rgb(0 240 255 / 30%);
+    background: rgb(0 240 255 / 4%);
   }
 }
 
 .nexus-feedback-icon {
   font-size: 1.6rem;
-  width: 2.5rem;
-  text-align: center;
   flex-shrink: 0;
+  line-height: 1;
 }
 
 .nexus-feedback-info {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
+  min-width: 0;
 }
 
 .nexus-feedback-method {
@@ -863,59 +825,57 @@ footer.nexus-footer {
   font-weight: 700;
   color: #c5c6c7;
   letter-spacing: 0.04em;
+  margin-bottom: 0.2rem;
 }
 
 .nexus-feedback-desc {
-  font-size: 0.78rem;
-  color: #6c7a8d;
-  line-height: 1.4;
+  font-size: 0.77rem;
+  color: #4a5568;
+  line-height: 1.5;
+  margin-bottom: 0.25rem;
 }
 
 .nexus-feedback-handle {
   font-size: 0.78rem;
   color: #00f0ff;
   font-weight: 500;
-  margin-top: 0.1rem;
 }
 
 .nexus-feedback-arrow {
   font-size: 1.1rem;
-  color: #2a3450;
+  color: #4a5568;
   flex-shrink: 0;
-  transition: color 0.2s;
 }
 
-.nexus-feedback-card:hover .nexus-feedback-arrow {
-  color: #00f0ff;
-}
-
-// ─── Support ──────────────────────────────────────────────────────────────────
+// ─── Support section ──────────────────────────────────────────────────────────
 
 .nexus-support-mission {
-  font-size: 0.92rem;
-  color: #c5c6c7;
+  font-size: 0.9rem;
+  color: #8a9ab0;
   line-height: 1.7;
   margin-bottom: 1.2rem;
 
-  p { margin: 0; }
+  strong {
+    color: #c5c6c7;
+  }
 }
 
 .nexus-support-banner {
   display: flex;
   align-items: flex-start;
   gap: 0.9rem;
-  background: rgb(255 0 127 / 5%);
-  border: 1px solid rgb(255 0 127 / 20%);
-  border-left: 3px solid #ff007f;
-  border-radius: 0 0.4rem 0.4rem 0;
-  padding: 0.9rem 1rem;
-  margin-bottom: 1.3rem;
+  padding: 0.9rem 1.1rem;
+  background: rgb(0 240 255 / 4%);
+  border: 1px solid rgb(0 240 255 / 15%);
+  border-radius: 0.4rem;
+  margin-bottom: 1.2rem;
 }
 
 .nexus-support-banner-icon {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   flex-shrink: 0;
   line-height: 1;
+  margin-top: 0.1rem;
 }
 
 .nexus-support-banner-text {
@@ -925,79 +885,73 @@ footer.nexus-footer {
   font-size: 0.85rem;
 
   strong {
-    color: #ff007f;
-    display: block;
-    font-size: 0.88rem;
-    letter-spacing: 0.03em;
+    color: #c5c6c7;
+    font-weight: 700;
   }
 
   span {
-    color: #8a9ab0;
+    color: #4a5568;
     line-height: 1.5;
   }
 }
 
-// ─── Contact Card ─────────────────────────────────────────────────────────────
+// ─── Contact card ─────────────────────────────────────────────────────────────
 
 .nexus-contact-card {
-  background: rgb(0 240 255 / 4%);
+  background: #101118;
   border: 1px solid #1e2230;
-  border-top: 2px solid rgb(0 240 255 / 35%);
-  border-radius: 0.5rem;
-  padding: 1.3rem;
+  border-radius: 0.4rem;
+  padding: 1.1rem 1.2rem;
   margin-bottom: 1.2rem;
 }
 
 .nexus-contact-name {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: #c5c6c7;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.2rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.15rem;
 }
 
 .nexus-contact-role {
-  font-size: 0.72rem;
-  color: #6c7a8d;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  margin-bottom: 1.1rem;
+  font-size: 0.75rem;
+  color: #4a5568;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.9rem;
 }
 
 .nexus-contact-links {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.5rem;
 }
 
 .nexus-contact-item {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
-  padding: 0.75rem 1rem;
-  background: #0b0c10;
-  border: 1px solid #1e2230;
-  border-radius: 0.4rem;
+  gap: 0.7rem;
+  padding: 0.55rem 0.8rem;
+  background: rgb(0 240 255 / 2%);
+  border: 1px solid #1a1d2a;
+  border-radius: 0.3rem;
   text-decoration: none;
-  color: inherit;
-  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s, background 0.2s;
 
   &:hover {
-    border-color: #00f0ff;
+    border-color: rgb(0 240 255 / 25%);
     background: rgb(0 240 255 / 5%);
-    box-shadow: 0 0 16px rgb(0 240 255 / 14%);
   }
 }
 
 .nexus-contact-icon {
-  font-size: 1.25rem;
-  width: 2rem;
-  text-align: center;
+  font-size: 1rem;
   flex-shrink: 0;
+  line-height: 1;
 }
 
 .nexus-contact-label {
-  font-size: 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: #6c7a8d;
