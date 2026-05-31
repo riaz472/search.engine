@@ -240,6 +240,7 @@
   </div>
 
   <script>
+    // ── Modal helpers ────────────────────────────────────────────────────────
     function nexusModal(id) {
       document.querySelectorAll('.nexus-modal').forEach(function(m){ m.classList.remove('nexus-modal--open'); });
       var modal = document.getElementById('nexus-modal-' + id);
@@ -257,6 +258,89 @@
       if (overlay) overlay.classList.remove('nexus-overlay--open');
     }
     document.addEventListener('keydown', function(e){ if (e.key === 'Escape') nexusCloseAll(); });
+
+    // ── Android WebBrowser postMessage bridge ────────────────────────────────
+    // Accepts wallpaper / theme state messages from the host Android app.
+    // The host app can call: webView.evaluateJavascript or postMessage from
+    // the WebView side with a JSON payload like:
+    //
+    //   { type: "nexus-bg",   value: "rgba(0,0,0,0.5)" }   → body background tint
+    //   { type: "nexus-blur", value: "16" }                 → glass blur amount (px)
+    //   { type: "nexus-tint", value: "#00f0ff22" }          → accent tint override
+    //   { type: "nexus-wall", action: "show"|"hide" }       → toggle wallpaper mode
+    //
+    (function () {
+      function applyNexusTheme(msg) {
+        try {
+          var data = (typeof msg === 'string') ? JSON.parse(msg) : msg;
+          if (!data || !data.type) return;
+
+          switch (data.type) {
+
+            // Override the body background colour / opacity tint
+            case 'nexus-bg':
+              document.documentElement.style.setProperty(
+                '--nexus-bg-override', data.value || 'transparent'
+              );
+              document.body.style.background = data.value || 'transparent';
+              break;
+
+            // Adjust the backdrop-filter blur radius on glass surfaces
+            case 'nexus-blur': {
+              var px = parseInt(data.value, 10) || 14;
+              var sheet = document.getElementById('nexus-dynamic-style');
+              if (!sheet) {
+                sheet = document.createElement('style');
+                sheet.id = 'nexus-dynamic-style';
+                document.head.appendChild(sheet);
+              }
+              var blur = 'blur(' + px + 'px) saturate(1.4)';
+              sheet.textContent =
+                '#search_header,.search_box,.result,.nexus-footer,#answers,.infobox{' +
+                'backdrop-filter:' + blur + '!important;' +
+                '-webkit-backdrop-filter:' + blur + '!important;}';
+              break;
+            }
+
+            // Swap the primary neon accent tint (e.g. match wallpaper hue)
+            case 'nexus-tint':
+              if (data.value) {
+                document.documentElement.style.setProperty('--nexus-cyan', data.value);
+                document.documentElement.style.setProperty('--color-categories-item-border-selected', data.value);
+              }
+              break;
+
+            // Toggle full wallpaper-passthrough mode vs opaque dark mode
+            case 'nexus-wall':
+              if (data.action === 'show') {
+                document.body.style.background = 'transparent';
+                document.documentElement.style.background = 'transparent';
+              } else if (data.action === 'hide') {
+                document.body.style.background = '#0b0c10';
+                document.documentElement.style.background = '#0b0c10';
+              }
+              break;
+          }
+        } catch(e) { /* ignore malformed messages */ }
+      }
+
+      // Standard browser postMessage listener (iframe / same-origin)
+      window.addEventListener('message', function(event) {
+        applyNexusTheme(event.data);
+      });
+
+      // JavaScript Interface bridge for Android WebView
+      // Usage in Android:  webView.addJavascriptInterface(obj, "NexusBridge")
+      // Then JS can call:  NexusBridge.postTheme('{"type":"nexus-bg","value":"..."}')
+      window.NexusBridge = window.NexusBridge || {
+        postTheme: function(json) { applyNexusTheme(json); }
+      };
+
+      // Expose globally so the Android app can also call via evaluateJavascript:
+      // webView.evaluateJavascript("nexusApplyTheme('{\"type\":\"nexus-wall\",\"action\":\"show\"}')", null)
+      window.nexusApplyTheme = applyNexusTheme;
+
+    }());
   </script>
 </body>
 </html>
