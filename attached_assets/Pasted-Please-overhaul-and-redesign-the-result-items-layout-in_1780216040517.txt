@@ -1,0 +1,25 @@
+Please overhaul and redesign the result items layout inside 'searx/templates/simple/results.html' and associated style assets. We want to implement the brand-header format (Logo + URL) but present the search results in a completely unique, highly interactive, and out-of-the-box cyberpunk style that drives heavy user interaction.
+
+Apply these specific VVIP architectural modifications:
+
+1. RE-ARCHITECT RESULT CARD HEADER (Favicon + Brand Row):
+   - At the top of each search card, build a sleek horizontal row (`display: flex; align-items: center; gap: 12px; margin-bottom: 12px;`).
+   - Position the site's favicon logo container on the left, wrapped in a smooth rounded capsule (`border-radius: 8px; background: rgba(255, 255, 255, 0.08); padding: 5px;`).
+   - Next to the favicon, stack the Website Brand Display Name (Crisp Bold White, `#FFFFFF`) and the clean source URL path breadcrumb below it in dimmed silver (`#A0A0A0`).
+
+2. INTRODUCE AN ANOKHA (UNIQUE) MODULAR INTERACTIVE STYLE:
+   - Do not display a flat vertical list. Transform each result into a structured Cyber-Tile Module with a deep obsidian solid background (`background: #14151C !important;`) and a neon electric cyan glowing frame outline (`border: 1px solid rgba(0, 240, 255, 0.25); border-radius: 16px; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);`).
+   - Title Positioning: Place the main title right below the header row. Set the title font to Neon Electric Cyan (`#00F0FF`) with a prominent hover glow shadow (`box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);`).
+   - Description Snippet: Render the snippet description in maximum contrast matte silver (`#E0E0E0`) with ample breathing line-height (`line-height: 1.6;`).
+   - INTERACTIVE ACTION BAR (The Unique Factor): At the bottom right of each result card tile, add a minimalist micro-utility pill badge labeled "SECURE LINK >". This badge should glow with a soft magenta/purple accent (#FF007F) on user interaction, giving them an explicit, game-like visual anchor to click on.
+
+3. SUB-LINKS & DEEP SITELINKS GRID:
+   - If a main search result provides sub-links (like internal pages), do not list them as messy text lines. 
+   - Render them in a clean horizontal flex-grid format inside the card, turning each sub-link into an isolated interactive sub-button with a thin sleek translucent divider (`border-top: 1px solid rgba(255, 255, 255, 0.08);`).
+   - Add a subtle chevron pointer (`>`) to each sublink to emphasize micro-clicks.
+
+4. OVERALL LAYOUT INTEGRATION:
+   - Ensure the main content layout and background layer are completely solid matte black (`background: #0B0C10 !important;`) for 100% stable reading comfort, overriding any transparent rule.
+   - Maintain seamless mobile responsive flex frameworks so these advanced cards stack cleanly on mobile browser webviews.
+
+Please run the style compilation loop and push the template updates once verified!

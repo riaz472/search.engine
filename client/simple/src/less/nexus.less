@@ -134,9 +134,9 @@ html {
   position: relative;
   overflow: hidden;
   transition:
-    border-color 0.25s ease,
-    box-shadow 0.25s ease,
-    background 0.25s ease,
+    border-color 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+    box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+    background 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
     transform 0.2s ease;
 
   // Subtle top-edge glow line
@@ -164,6 +164,12 @@ html {
       0 8px 32px rgba(0, 0, 0, 0.55),
       0 0 28px rgba(0, 240, 255, 0.09);
     transform: translateY(-1px);
+
+    .nexus-secure-badge {
+      border-color: rgba(255, 0, 127, 0.6) !important;
+      color: #ff007f !important;
+      box-shadow: 0 0 12px rgba(255, 0, 127, 0.35), 0 0 24px rgba(255, 0, 127, 0.15);
+    }
   }
 
   // ── Staggered slide-up animation on load ──────────────────────────────────
@@ -179,9 +185,83 @@ html {
   &:nth-child(8)  { animation-delay: 0.30s; }
   &:nth-child(n+9) { animation-delay: 0.32s; }
 
+  // ── Brand header row ──────────────────────────────────────────────────────
+  .nexus-card-header {
+    margin-bottom: 0.7rem;
+  }
+
+  .nexus-brand-row {
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none !important;
+  }
+
+  .nexus-favicon-pill {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(0, 240, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    box-sizing: border-box;
+  }
+
+  .nexus-favicon-img {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    object-fit: contain;
+  }
+
+  .nexus-favicon-fallback {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: rgba(0, 240, 255, 0.7);
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  .nexus-brand-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
+  }
+
+  .nexus-brand-name {
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    letter-spacing: 0.015em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.25;
+  }
+
+  .nexus-brand-url {
+    font-size: 0.72rem !important;
+    color: #a0a0a0 !important;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.25;
+  }
+
+  .nexus-url-sep {
+    color: rgba(0, 240, 255, 0.35);
+    font-size: 0.65rem;
+  }
+
   // ── Title heading ─────────────────────────────────────────────────────────
   h3 {
-    margin: 0 0 0.35rem 0 !important;
+    margin: 0 0 0.45rem 0 !important;
     padding: 0 !important;
     font-size: 1.05rem !important;
 
@@ -207,13 +287,12 @@ html {
     }
   }
 
-  // ── URL / source breadcrumb ───────────────────────────────────────────────
+  // ── URL / source breadcrumb (legacy, kept for non-default templates) ──────
   .url_wrapper,
   .url_wrapper * {
-    color: #4ade80 !important;
-    font-size: 0.76rem !important;
-    letter-spacing: 0.025em;
-    opacity: 0.82;
+    color: #a0a0a0 !important;
+    font-size: 0.72rem !important;
+    letter-spacing: 0.02em;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -226,7 +305,7 @@ html {
     color: #e0e0e0 !important;
     font-size: 0.88rem !important;
     line-height: 1.65 !important;
-    margin: 0.45rem 0 0 0 !important;
+    margin: 0 0 0.65rem 0 !important;
     padding: 0 !important;
     max-width: 100%;
 
@@ -251,14 +330,64 @@ html {
     letter-spacing: 0.03em;
   }
 
+  // ── Sub-links grid ────────────────────────────────────────────────────────
+  .nexus-sublinks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0.5rem 0 0.65rem 0;
+    padding-top: 0.6rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .nexus-sublink-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.28rem 0.7rem;
+    background: rgba(0, 240, 255, 0.04);
+    border: 1px solid rgba(0, 240, 255, 0.12);
+    border-radius: 6px;
+    text-decoration: none !important;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+
+    &:hover {
+      background: rgba(0, 240, 255, 0.1);
+      border-color: rgba(0, 240, 255, 0.35);
+
+      .nexus-sublink-chevron,
+      .nexus-sublink-title {
+        color: #00f0ff !important;
+      }
+    }
+  }
+
+  .nexus-sublink-chevron {
+    color: rgba(0, 240, 255, 0.4) !important;
+    font-size: 0.78rem;
+    line-height: 1;
+    transition: color 0.2s;
+  }
+
+  .nexus-sublink-title {
+    color: #c5c6c7 !important;
+    font-size: 0.76rem !important;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 140px;
+    transition: color 0.2s;
+  }
+
   // ── Engine source badges row ──────────────────────────────────────────────
   .engines {
     display: flex !important;
     flex-wrap: wrap;
     gap: 0.3rem;
-    justify-content: flex-end;
+    justify-content: flex-start;
     float: none !important;
-    margin-top: 0.65rem !important;
+    margin-top: 0.5rem !important;
 
     span {
       display: inline-flex !important;
@@ -282,7 +411,42 @@ html {
     }
   }
 
-  // ── Favicon ───────────────────────────────────────────────────────────────
+  // ── Action bar (SECURE LINK badge) ────────────────────────────────────────
+  .nexus-action-bar {
+    display: flex !important;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 0.75rem;
+  }
+
+  .nexus-secure-badge {
+    display: inline-flex !important;
+    align-items: center;
+    padding: 0.28rem 0.85rem !important;
+    font-size: 0.65rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 0, 127, 0.65) !important;
+    background: rgba(255, 0, 127, 0.05) !important;
+    border: 1px solid rgba(255, 0, 127, 0.25) !important;
+    border-radius: 999px !important;
+    text-decoration: none !important;
+    transition:
+      color 0.25s ease,
+      border-color 0.25s ease,
+      background 0.25s ease,
+      box-shadow 0.25s ease;
+
+    &:hover {
+      color: #ff007f !important;
+      background: rgba(255, 0, 127, 0.1) !important;
+      border-color: rgba(255, 0, 127, 0.55) !important;
+      box-shadow: 0 0 14px rgba(255, 0, 127, 0.35), 0 0 28px rgba(255, 0, 127, 0.15);
+    }
+  }
+
+  // ── Favicon (legacy fallback for non-default templates) ───────────────────
   .favicon img {
     border-radius: 4px !important;
     border: 1px solid rgba(0, 240, 255, 0.1) !important;
@@ -310,6 +474,20 @@ html {
       0 0 24px rgba(0, 240, 255, 0.08);
     border-left: 0.2rem solid #00f0ff !important;
     border-radius: 16px !important;
+  }
+}
+
+// ─── Mobile result card adjustments ───────────────────────────────────────────
+
+@media screen and (max-width: @phone) {
+  .result {
+    .nexus-sublink-title {
+      max-width: 100px;
+    }
+
+    .nexus-action-bar {
+      margin-top: 0.6rem;
+    }
   }
 }
 

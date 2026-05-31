@@ -2,19 +2,34 @@
 
 {{ result_header(result, favicons, image_proxify) -}}
 {{- result_sub_header(result) -}}
+
 {% if result.iframe_src -%}
 <p class="altlink"><a class="btn-collapse collapsed media-loader disabled_if_nojs" data-target="#result-media-{{ index }}" data-btn-text-collapsed="{{ _('show media') }}" data-btn-text-not-collapsed="{{ _('hide media') }}">{{ icon_small('play') }} {{ _('show media') }}</a></p>
 {%- endif %}
+
 {%- if result.content %}
-  <p class="content">
-    {{ result.content|safe }}
-  </p>
+  <p class="content">{{ result.content|safe }}</p>
 {%- else %}
-  <p class="content empty_element">
-    {{ _('This site did not provide any description.')|safe }}
-  </p>
+  <p class="content empty_element">{{ _('This site did not provide any description.')|safe }}</p>
 {% endif -%}
+
+{%- if result.urls %}
+<div class="nexus-sublinks">
+  {%- for sublink in result.urls[:6] %}
+  <a href="{{ sublink.url }}" class="nexus-sublink-item" {% if results_on_new_tab %}target="_blank" rel="noopener noreferrer"{% else %}rel="noreferrer"{% endif %}>
+    <span class="nexus-sublink-chevron">›</span>
+    <span class="nexus-sublink-title">{{ sublink.title }}</span>
+  </a>
+  {%- endfor %}
+</div>
+{%- endif %}
+
 {{- result_sub_footer(result) -}}
+
+<div class="nexus-action-bar">
+  <a href="{{ result.url }}" class="nexus-secure-badge" {% if results_on_new_tab %}target="_blank" rel="noopener noreferrer"{% else %}rel="noreferrer"{% endif %}>SECURE LINK ›</a>
+</div>
+
 {% if result.iframe_src -%}
 <div id="result-media-{{ index }}" class="embedded-content invisible">
   {{ iframe(result.iframe_src) }}
