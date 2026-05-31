@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="endpoint" content="{{ endpoint }}">
-  <meta name="description" content="SearXNG — a privacy-respecting, open metasearch engine">
-  <meta name="keywords" content="SearXNG, search, search engine, metasearch, meta search">
-  <meta name="generator" content="searxng/{{ searxng_version }}">
+  <meta name="description" content="Nexus Search — Decentralized. Secure. Anonymous.">
+  <meta name="keywords" content="Nexus Search, private search, anonymous search, secure search engine">
   <meta name="referrer" content="no-referrer">
   <meta name="robots" content="noarchive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -64,25 +63,107 @@
     {% block content %}
     {% endblock %}
   </main>
-  <footer>
-    <p>
-    {{ _('Powered by') }} <a href="{{ url_for('info', pagename='about') }}">SearXNG</a> - {{ searxng_version }} — {{ _('a privacy-respecting, open metasearch engine') }}<br>
-        <a href="{{ searxng_git_url }}">{{ _('Source code') }}</a>
-        | <a href="{{ get_setting('brand.issue_url') }}">{{ _('Issue tracker') }}</a>
-        {% if enable_metrics %}| <a href="{{ url_for('stats') }}">{{ _('Engine stats') }}</a>{% endif %}
-        {% if get_setting('brand.public_instances') %}
-        | <a href="{{ get_setting('brand.public_instances') }}">{{ _('Public instances') }}</a>
-        {% endif %}
-        {% if get_setting('general.privacypolicy_url') %}
-        | <a href="{{ get_setting('general.privacypolicy_url') }}">{{ _('Privacy policy') }}</a>
-        {% endif %}
-        {% if get_setting('general.contact_url') %}
-        | <a href="{{ get_setting('general.contact_url') }}">{{ _('Contact instance maintainer') }}</a>
-        {% endif %}
-        {% for title, link in get_setting('brand.custom.links').items() %}
-        | <a href="{{ link }}">{{ _(title) }}</a>
-        {% endfor %}
-    </p>
+
+  <!-- ═══════════════════════════════════════════════
+       NEXUS FOOTER
+  ════════════════════════════════════════════════ -->
+  <footer class="nexus-footer">
+    <p class="nexus-footer-credit">Developed &amp; Maintained by <span class="nexus-author">Riaz Ali Shahani</span></p>
+    <nav class="nexus-footer-links">
+      <a href="#" class="nexus-footer-link" onclick="nexusModal('privacy'); return false;">Privacy Policy</a>
+      <span class="nexus-footer-sep">·</span>
+      <a href="#" class="nexus-footer-link" onclick="nexusModal('terms'); return false;">Terms of Service</a>
+      <span class="nexus-footer-sep">·</span>
+      <a href="#" class="nexus-footer-link" onclick="nexusModal('contact'); return false;">Contact Us</a>
+    </nav>
   </footer>
+
+  <!-- ═══════════════════════════════════════════════
+       NEXUS MODALS
+  ════════════════════════════════════════════════ -->
+  <div class="nexus-overlay" id="nexus-overlay" onclick="nexusCloseAll()"></div>
+
+  <!-- Privacy Policy Modal -->
+  <div class="nexus-modal" id="nexus-modal-privacy" role="dialog" aria-modal="true" aria-label="Privacy Policy">
+    <button class="nexus-modal-close" onclick="nexusCloseAll()" aria-label="Close">&#10005;</button>
+    <h2 class="nexus-modal-title">Privacy Policy</h2>
+    <div class="nexus-modal-body">
+      <p class="nexus-modal-lead">Nexus Search is engineered around a single principle: <strong>your search is yours alone.</strong></p>
+      <ul class="nexus-modal-list">
+        <li><span class="nexus-bullet">▸</span> <strong>Zero Logs.</strong> We do not record, store, or retain any search queries, IP addresses, session data, or browsing history — ever.</li>
+        <li><span class="nexus-bullet">▸</span> <strong>No Tracking.</strong> There are no cookies for tracking, no analytics scripts, no fingerprinting, and no user profiling of any kind.</li>
+        <li><span class="nexus-bullet">▸</span> <strong>No Third-Party Data Sharing.</strong> Your queries are never sold, shared, or transmitted to advertisers, data brokers, or any third party.</li>
+        <li><span class="nexus-bullet">▸</span> <strong>Decentralized Routing.</strong> Searches are distributed across multiple independent engines simultaneously so no single source can build a profile on you.</li>
+        <li><span class="nexus-bullet">▸</span> <strong>Anonymous by Design.</strong> Nexus Search acts as an anonymous proxy between you and search providers. They see the engine, not you.</li>
+        <li><span class="nexus-bullet">▸</span> <strong>No Account Required.</strong> Full functionality is available with no registration, no sign-in, and no personal information collected.</li>
+        <li><span class="nexus-bullet">▸</span> <strong>Preferences Stored Locally.</strong> Any optional settings you configure are saved in your browser only, never on our servers.</li>
+      </ul>
+      <p class="nexus-modal-note">By using Nexus Search, you acknowledge and agree to this privacy-first operating model.</p>
+    </div>
+  </div>
+
+  <!-- Terms of Service Modal -->
+  <div class="nexus-modal" id="nexus-modal-terms" role="dialog" aria-modal="true" aria-label="Terms of Service">
+    <button class="nexus-modal-close" onclick="nexusCloseAll()" aria-label="Close">&#10005;</button>
+    <h2 class="nexus-modal-title">Terms of Service</h2>
+    <div class="nexus-modal-body">
+      <p class="nexus-modal-lead">By accessing Nexus Search, you agree to the following terms.</p>
+      <ul class="nexus-modal-list">
+        <li><span class="nexus-bullet">▸</span> <strong>Intended Use.</strong> Nexus Search is provided as a free, privacy-respecting search aggregation tool for personal, lawful use only.</li>
+        <li><span class="nexus-bullet">▸</span> <strong>Encrypted Routing.</strong> All queries are transmitted over HTTPS with strict no-referrer headers, ensuring your connection is protected end-to-end.</li>
+        <li><span class="nexus-bullet">▸</span> <strong>Aggregated Results.</strong> Search results are sourced from multiple independent search engines. Nexus Search does not control the content of third-party results and accepts no liability for external content.</li>
+        <li><span class="nexus-bullet">▸</span> <strong>No Warranty.</strong> The service is provided "as-is" with no guarantee of uptime, accuracy, or completeness of results.</li>
+        <li><span class="nexus-bullet">▸</span> <strong>Prohibited Conduct.</strong> Automated scraping, abuse of the search infrastructure, or use of this service for any illegal purpose is strictly prohibited.</li>
+        <li><span class="nexus-bullet">▸</span> <strong>No Liability.</strong> The operator of Nexus Search shall not be held liable for any direct or indirect damages arising from use of this service.</li>
+        <li><span class="nexus-bullet">▸</span> <strong>Changes.</strong> These terms may be updated at any time. Continued use of the service constitutes acceptance of any revised terms.</li>
+      </ul>
+      <p class="nexus-modal-note">If you do not agree to these terms, please discontinue use of Nexus Search.</p>
+    </div>
+  </div>
+
+  <!-- Contact Us Modal -->
+  <div class="nexus-modal" id="nexus-modal-contact" role="dialog" aria-modal="true" aria-label="Contact Us">
+    <button class="nexus-modal-close" onclick="nexusCloseAll()" aria-label="Close">&#10005;</button>
+    <h2 class="nexus-modal-title">Contact Us</h2>
+    <div class="nexus-modal-body">
+      <p class="nexus-modal-lead">Reach out directly to the developer and maintainer of Nexus Search.</p>
+      <div class="nexus-contact-card">
+        <div class="nexus-contact-name">Riaz Ali Shahani</div>
+        <div class="nexus-contact-role">Developer &amp; Maintainer — Nexus Search</div>
+        <div class="nexus-contact-links">
+          <a class="nexus-contact-item" href="https://wa.me/923301458939" target="_blank" rel="noopener noreferrer">
+            <span class="nexus-contact-icon">&#128172;</span>
+            <span class="nexus-contact-label">WhatsApp</span>
+            <span class="nexus-contact-value">+92 330 145 8939</span>
+          </a>
+          <a class="nexus-contact-item" href="mailto:riazalishahani485@gmail.com" rel="noopener noreferrer">
+            <span class="nexus-contact-icon">&#9993;</span>
+            <span class="nexus-contact-label">Email</span>
+            <span class="nexus-contact-value">riazalishahani485@gmail.com</span>
+          </a>
+        </div>
+      </div>
+      <p class="nexus-modal-note">Response times may vary. For urgent matters, WhatsApp is preferred.</p>
+    </div>
+  </div>
+
+  <script>
+    function nexusModal(id) {
+      document.querySelectorAll('.nexus-modal').forEach(function(m){ m.classList.remove('nexus-modal--open'); });
+      var modal = document.getElementById('nexus-modal-' + id);
+      var overlay = document.getElementById('nexus-overlay');
+      if (modal && overlay) {
+        modal.classList.add('nexus-modal--open');
+        overlay.classList.add('nexus-overlay--open');
+        modal.querySelector('.nexus-modal-close').focus();
+      }
+    }
+    function nexusCloseAll() {
+      document.querySelectorAll('.nexus-modal').forEach(function(m){ m.classList.remove('nexus-modal--open'); });
+      var overlay = document.getElementById('nexus-overlay');
+      if (overlay) overlay.classList.remove('nexus-overlay--open');
+    }
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') nexusCloseAll(); });
+  </script>
 </body>
 </html>

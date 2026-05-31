@@ -1,0 +1,306 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Nexus Search — Custom Footer, Modals & Branding
+
+// ─── Footer ───────────────────────────────────────────────────────────────────
+
+footer.nexus-footer {
+  clear: both;
+  min-height: 5rem;
+  padding: 1.4rem 1rem;
+  width: 100%;
+  text-align: center;
+  background-color: var(--color-footer-background);
+  border-top: 1px solid #1e2230;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nexus-footer-credit {
+  font-size: 0.82em;
+  color: #6c7a8d;
+  letter-spacing: 0.04em;
+  margin: 0;
+  padding: 0;
+}
+
+.nexus-author {
+  color: #00f0ff;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-shadow: 0 0 8px rgb(0 240 255 / 40%);
+}
+
+.nexus-footer-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nexus-footer-link {
+  font-size: 0.78em;
+  color: #6c7a8d;
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.1rem 0;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s, text-shadow 0.2s;
+
+  &:hover {
+    color: #00f0ff;
+    border-bottom-color: #00f0ff;
+    text-shadow: 0 0 8px rgb(0 240 255 / 50%);
+  }
+}
+
+.nexus-footer-sep {
+  color: #2a2e40;
+  font-size: 0.85em;
+  user-select: none;
+}
+
+// ─── Overlay ──────────────────────────────────────────────────────────────────
+
+.nexus-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgb(0 0 0 / 75%);
+  backdrop-filter: blur(3px);
+  z-index: 9000;
+  cursor: pointer;
+}
+
+.nexus-overlay--open {
+  display: block;
+}
+
+// ─── Modal Base ───────────────────────────────────────────────────────────────
+
+.nexus-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.96);
+  z-index: 9100;
+  width: min(680px, 94vw);
+  max-height: 85vh;
+  overflow-y: auto;
+  background: #0e1018;
+  border: 1px solid #1e2230;
+  border-top: 2px solid #00f0ff;
+  border-radius: 0.6rem;
+  box-shadow:
+    0 0 0 1px rgb(0 240 255 / 10%),
+    0 0 40px rgb(0 240 255 / 12%),
+    0 24px 60px rgb(0 0 0 / 70%);
+  padding: 2rem 2rem 1.8rem 2rem;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+
+  // Scrollbar styling
+  scrollbar-width: thin;
+  scrollbar-color: #1e2230 #0b0c10;
+}
+
+.nexus-modal--open {
+  display: block;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.nexus-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: 1px solid #1e2230;
+  color: #6c7a8d;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+
+  &:hover,
+  &:focus {
+    color: #00f0ff;
+    border-color: #00f0ff;
+    background: rgb(0 240 255 / 8%);
+    outline: none;
+  }
+}
+
+.nexus-modal-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #00f0ff;
+  text-shadow: 0 0 12px rgb(0 240 255 / 40%);
+  margin: 0 0 1.4rem 0;
+  padding: 0;
+  padding-right: 2rem;
+}
+
+.nexus-modal-lead {
+  font-size: 0.95rem;
+  color: #c5c6c7;
+  margin: 0 0 1.2rem 0;
+  line-height: 1.6;
+}
+
+.nexus-modal-body {
+  font-size: 0.9rem;
+  color: #8a9ab0;
+  line-height: 1.7;
+
+  strong {
+    color: #c5c6c7;
+    font-weight: 600;
+  }
+}
+
+.nexus-modal-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.nexus-modal-list li {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  padding: 0.6rem 0.8rem;
+  background: rgb(0 240 255 / 3%);
+  border-left: 2px solid #1e2230;
+  border-radius: 0 0.3rem 0.3rem 0;
+  transition: border-color 0.2s, background 0.2s;
+
+  &:hover {
+    border-left-color: #00f0ff;
+    background: rgb(0 240 255 / 6%);
+  }
+}
+
+.nexus-bullet {
+  color: #00f0ff;
+  font-size: 0.75rem;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.nexus-modal-note {
+  font-size: 0.78rem;
+  color: #4a5568;
+  margin: 0;
+  border-top: 1px solid #1e2230;
+  padding-top: 1rem;
+  font-style: italic;
+}
+
+// ─── Contact Card ─────────────────────────────────────────────────────────────
+
+.nexus-contact-card {
+  background: rgb(0 240 255 / 4%);
+  border: 1px solid #1e2230;
+  border-top: 2px solid rgb(0 240 255 / 40%);
+  border-radius: 0.5rem;
+  padding: 1.4rem;
+  margin: 0 0 1.2rem 0;
+}
+
+.nexus-contact-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #c5c6c7;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.2rem;
+}
+
+.nexus-contact-role {
+  font-size: 0.78rem;
+  color: #6c7a8d;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+
+.nexus-contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.nexus-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.8rem 1rem;
+  background: #0b0c10;
+  border: 1px solid #1e2230;
+  border-radius: 0.4rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    border-color: #00f0ff;
+    background: rgb(0 240 255 / 5%);
+    box-shadow: 0 0 16px rgb(0 240 255 / 15%);
+  }
+}
+
+.nexus-contact-icon {
+  font-size: 1.3rem;
+  width: 2rem;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.nexus-contact-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #6c7a8d;
+  min-width: 4.5rem;
+  flex-shrink: 0;
+}
+
+.nexus-contact-value {
+  font-size: 0.92rem;
+  color: #00f0ff;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  word-break: break-all;
+}
+
+// ─── Mobile ───────────────────────────────────────────────────────────────────
+
+@media screen and (max-width: @phone) {
+  .nexus-modal {
+    padding: 1.4rem 1.2rem 1.4rem 1.2rem;
+  }
+
+  .nexus-contact-item {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .nexus-contact-label {
+    min-width: unset;
+  }
+}
