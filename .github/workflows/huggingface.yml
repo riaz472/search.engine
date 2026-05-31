@@ -1,0 +1,21 @@
+name: Sync to Hugging Face Spaces
+
+on:
+  push:
+    branches: [main, master]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Push to Hugging Face
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          git remote add hf https://Riaz485:$HF_TOKEN@huggingface.co/spaces/Riaz485/nexus-search-ultimate
+          git push hf HEAD:main --force
