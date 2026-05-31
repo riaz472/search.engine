@@ -6,132 +6,143 @@
  * To change the colors of the site, simple edit this variables
  */
 
-/// Light Theme
+/// Nexus Cyberpunk Dark Theme — forced as base/default
 :root {
+  /// Nexus Palette
+  --nexus-cyan: #00f0ff;
+  --nexus-magenta: #ff007f;
+  --nexus-bg: #0b0c10;
+  --nexus-bg-card: #13151c;
+  --nexus-bg-input: #0e1018;
+  --nexus-bg-header: #0a0b0f;
+  --nexus-border: #1e2230;
+  --nexus-font: #c5c6c7;
+  --nexus-font-dim: #6c7a8d;
+
   /// Base Colors
-  --color-base-font: #444;
-  --color-base-font-rgb: 68, 68, 68;
-  --color-base-background: #fff;
-  --color-base-background-mobile: #f2f5f8;
-  --color-url-font: #334999;
-  --color-url-visited-font: #9822c3;
+  --color-base-font: #c5c6c7;
+  --color-base-font-rgb: 197, 198, 199;
+  --color-base-background: #0b0c10;
+  --color-base-background-mobile: #0b0c10;
+  --color-url-font: #00f0ff;
+  --color-url-visited-font: #bf5fcf;
   /// Header Colors
-  --color-header-background: #fdfbff;
-  --color-header-border: #ddd;
+  --color-header-background: #0a0b0f;
+  --color-header-border: #1a1d2a;
   /// Footer Colors
-  --color-footer-background: #fdfbff;
-  --color-footer-border: #ddd;
+  --color-footer-background: #0a0b0f;
+  --color-footer-border: #1a1d2a;
   /// Sidebar Colors
-  --color-sidebar-border: #ddd;
-  --color-sidebar-font: #000;
-  --color-sidebar-background: #fff;
+  --color-sidebar-border: #1e2230;
+  --color-sidebar-font: #c5c6c7;
+  --color-sidebar-background: #0e1018;
   /// BackToTop Colors
-  --color-backtotop-font: #444;
-  --color-backtotop-border: #ddd;
-  --color-backtotop-background: #fff;
+  --color-backtotop-font: #c5c6c7;
+  --color-backtotop-border: #1e2230;
+  --color-backtotop-background: #13151c;
   /// Button Colors
-  --color-btn-background: #3050ff;
-  --color-btn-font: #fff;
-  --color-show-btn-background: #bbb;
-  --color-show-btn-font: #000;
+  --color-btn-background: #00f0ff;
+  --color-btn-font: #0b0c10;
+  --color-show-btn-background: #1e2230;
+  --color-show-btn-font: #c5c6c7;
   /// Search Input Colors
-  --color-search-border: #bbb;
-  --color-search-shadow: 0 2px 8px rgb(34 38 46 / 25%);
-  --color-search-background: #fff;
-  --color-search-font: #222;
-  --color-search-background-hover: #3050ff;
+  --color-search-border: #1e2230;
+  --color-search-shadow: 0 0 18px rgb(0 240 255 / 15%), 0 2px 8px rgb(0 0 0 / 60%);
+  --color-search-background: #0e1018;
+  --color-search-font: #e0e1e2;
+  --color-search-background-hover: #00f0ff;
   /// Modal Colors
-  --color-error: #db3434;
-  --color-error-background: lighten(#db3434, 40%);
-  --color-warning: #dbba34;
-  --color-warning-background: lighten(#dbba34, 40%);
-  --color-success: #42db34;
-  --color-success-background: lighten(#42db34, 40%);
+  --color-error: #ff4f4f;
+  --color-error-background: #2a0b0b;
+  --color-warning: #f1d561;
+  --color-warning-background: #2a230b;
+  --color-success: #00f0a0;
+  --color-success-background: #0b2a1e;
   /// Categories Colors
-  --color-categories-item-selected-font: #3050ff;
-  --color-categories-item-border-selected: #3050ff;
+  --color-categories-item-selected-font: #00f0ff;
+  --color-categories-item-border-selected: #00f0ff;
   /// Autocomplete Colors
-  --color-autocomplete-font: #000;
-  --color-autocomplete-border: #bbb;
-  --color-autocomplete-shadow: 0 2px 8px rgb(34 38 46 / 25%);
-  --color-autocomplete-background: #fff;
-  --color-autocomplete-background-hover: #e3e3e3;
+  --color-autocomplete-font: #c5c6c7;
+  --color-autocomplete-border: #1e2230;
+  --color-autocomplete-shadow: 0 4px 24px rgb(0 240 255 / 12%), 0 2px 8px rgb(0 0 0 / 60%);
+  --color-autocomplete-background: #0e1018;
+  --color-autocomplete-background-hover: #13151c;
   /// Answer Colors
-  --color-answer-font: #444; // same as --color-base-font
-  --color-answer-background: #fff;
+  --color-answer-font: #c5c6c7;
+  --color-answer-background: #13151c;
   // colors of the KeyValue result class
-  --color-result-keyvalue-col-table: #fdfbff;
-  --color-result-keyvalue-odd: #fdfbff;
-  --color-result-keyvalue-even: #fff;
+  --color-result-keyvalue-col-table: #0e1018;
+  --color-result-keyvalue-odd: #0e1018;
+  --color-result-keyvalue-even: #13151c;
   /// Results Colors
-  --color-result-background: #fff;
-  --color-result-border: #ddd;
-  --color-result-url-font: #000;
-  --color-result-vim-selected: #f7f7f7;
-  --color-result-vim-arrow: #000bbb;
-  --color-result-description-highlight-font: #000;
-  --color-result-link-font: #000bbb;
-  --color-result-link-font-highlight: #000bbb;
-  --color-result-link-visited-font: #9822c3;
-  --color-result-publishdate-font: #777;
-  --color-result-engines-font: #545454;
-  --color-result-search-url-border: #ddd;
-  --color-result-search-url-font: #000;
+  --color-result-background: #13151c;
+  --color-result-border: #1e2230;
+  --color-result-url-font: #c5c6c7;
+  --color-result-vim-selected: #1a1d2acc;
+  --color-result-vim-arrow: #00f0ff;
+  --color-result-description-highlight-font: #e0e1e2;
+  --color-result-link-font: #00f0ff;
+  --color-result-link-font-highlight: #00f0ff;
+  --color-result-link-visited-font: #bf5fcf;
+  --color-result-publishdate-font: #6c7a8d;
+  --color-result-engines-font: #8a9ab0;
+  --color-result-search-url-border: #1e2230;
+  --color-result-search-url-font: #c5c6c7;
   // Images Colors
-  --color-result-image-span-font: #444;
-  --color-result-image-span-font-selected: #fff;
-  --color-result-image-background: #fff;
+  --color-result-image-span-font: #c5c6c7;
+  --color-result-image-span-font-selected: #0b0c10;
+  --color-result-image-background: #0e1018;
   /// Settings Colors
-  --color-settings-tr-hover: #ebebeb;
-  --color-settings-engine-description-font: #545454;
-  --color-settings-table-group-background: #0001;
+  --color-settings-tr-hover: #13151c;
+  --color-settings-engine-description-font: #8a9ab0;
+  --color-settings-table-group-background: #0b0c1088;
   /// Detail modal
-  --color-result-detail-font: #fff;
-  --color-result-detail-label-font: lightgray;
-  --color-result-detail-background: #242424;
-  --color-result-detail-hr: #555;
-  --color-result-detail-link: #8af;
-  --color-result-detail-loader-border: rgb(255 255 255 / 20%);
+  --color-result-detail-font: #c5c6c7;
+  --color-result-detail-label-font: #8a9ab0;
+  --color-result-detail-background: #0e1018;
+  --color-result-detail-hr: #1e2230;
+  --color-result-detail-link: #00f0ff;
+  --color-result-detail-loader-border: rgb(0 240 255 / 20%);
   --color-result-detail-loader-borderleft: rgb(0 0 0 / 0%);
   /// Toolkit Colors
-  --color-toolkit-badge-font: #fff;
-  --color-toolkit-badge-background: #545454;
-  --color-toolkit-kbd-font: #fff;
-  --color-toolkit-kbd-background: #000;
-  --color-toolkit-dialog-border: #ddd;
-  --color-toolkit-dialog-background: #fff;
-  --color-toolkit-tabs-label-border: #fff;
-  --color-toolkit-tabs-section-border: #ddd;
-  --color-toolkit-select-background: #e1e1e1;
-  --color-toolkit-select-border: #ddd;
-  --color-toolkit-select-background-hover: #bbb;
-  --color-toolkit-input-text-font: #222;
-  --color-toolkit-checkbox-onoff-off-background: #ddd;
-  --color-toolkit-checkbox-onoff-on-background: #ddd;
-  --color-toolkit-checkbox-onoff-on-mark-background: #3050ff;
-  --color-toolkit-checkbox-onoff-on-mark-color: #fff;
-  --color-toolkit-checkbox-onoff-off-mark-background: #aaa;
-  --color-toolkit-checkbox-onoff-off-mark-color: #fff;
-  --color-toolkit-checkbox-label-background: #ddd;
-  --color-toolkit-checkbox-label-border: #ddd;
-  --color-toolkit-checkbox-input-border: #3050ff;
-  --color-toolkit-engine-tooltip-border: #ddd;
-  --color-toolkit-engine-tooltip-background: #fff;
-  --color-toolkit-loader-border: rgb(0 0 0 / 20%);
-  --color-toolkit-loader-borderleft: rgb(255 255 255 / 0%);
-  --color-doc-code: #003;
-  --color-doc-code-background: #ddeaff;
+  --color-toolkit-badge-font: #0b0c10;
+  --color-toolkit-badge-background: #00f0ff;
+  --color-toolkit-kbd-font: #0b0c10;
+  --color-toolkit-kbd-background: #00f0ff;
+  --color-toolkit-dialog-border: #1e2230;
+  --color-toolkit-dialog-background: #0e1018;
+  --color-toolkit-tabs-label-border: #0b0c10;
+  --color-toolkit-tabs-section-border: #1e2230;
+  --color-toolkit-select-background: #13151c;
+  --color-toolkit-select-border: #1e2230;
+  --color-toolkit-select-background-hover: #1a1d2a;
+  --color-toolkit-input-text-font: #c5c6c7;
+  --color-toolkit-checkbox-onoff-off-background: #1e2230;
+  --color-toolkit-checkbox-onoff-on-background: #1e2230;
+  --color-toolkit-checkbox-onoff-on-mark-background: #00f0ff;
+  --color-toolkit-checkbox-onoff-on-mark-color: #0b0c10;
+  --color-toolkit-checkbox-onoff-off-mark-background: #6c7a8d;
+  --color-toolkit-checkbox-onoff-off-mark-color: #0b0c10;
+  --color-toolkit-checkbox-label-background: #13151c;
+  --color-toolkit-checkbox-label-border: #1e2230;
+  --color-toolkit-checkbox-input-border: #00f0ff;
+  --color-toolkit-engine-tooltip-border: #1e2230;
+  --color-toolkit-engine-tooltip-background: #0e1018;
+  --color-toolkit-loader-border: rgb(0 240 255 / 20%);
+  --color-toolkit-loader-borderleft: rgb(0 0 0 / 0%);
+  --color-doc-code: #c5c6c7;
+  --color-doc-code-background: #1a1d2a;
   /// Other misc colors
-  --color-bar-chart-primary: #5bc0de;
-  --color-bar-chart-secondary: #deb15b;
-  --color-image-resolution-background: rgb(0 0 0 / 50%);
-  --color-image-resolution-font: #fff;
-  --color-loading-indicator: rgb(255 255 255 / 20%);
-  --color-loading-indicator-gap: #fff;
-  --color-line-number: #64708d;
+  --color-bar-chart-primary: #00f0ff;
+  --color-bar-chart-secondary: #ff007f;
+  --color-image-resolution-background: rgb(0 0 0 / 70%);
+  --color-image-resolution-font: #c5c6c7;
+  --color-loading-indicator: rgb(0 240 255 / 20%);
+  --color-loading-indicator-gap: #00f0ff;
+  --color-line-number: #6c7a8d;
   // Favicons Colors
-  --color-favicon-background-color: #ddd;
-  --color-favicon-border-color: #ccc;
+  --color-favicon-background-color: #1e2230;
+  --color-favicon-border-color: #2a2e40;
 }
 
 .dark-themes() {

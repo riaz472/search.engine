@@ -1,23 +1,48 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 #main_index {
-  margin-top: 26vh;
+  margin-top: 22vh;
+  animation: nexus-fade-in 0.8s ease both;
 }
 
 .index {
   text-align: center;
 
   .title {
-    background: url("./img/searxng.png") no-repeat;
-    min-height: 4rem;
-    margin: 4rem auto;
+    background: none;
+    min-height: unset;
+    margin: 0 auto 2.5rem auto;
     background-position: center;
     background-size: contain;
   }
 
-  h1 {
-    font-size: 4em;
-    visibility: hidden;
+  h1.nexus-title {
+    font-size: 3.6em;
+    font-family: "Segoe UI", "Inter", "Rajdhani", system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    visibility: visible;
+    color: #00f0ff;
+    text-shadow:
+      0 0 10px #00f0ff,
+      0 0 30px #00f0ff99,
+      0 0 60px #00f0ff44,
+      0 0 100px #00f0ff22;
+    margin: 0 0 0.4em 0;
+    padding: 0;
+    line-height: 1.1;
+  }
+
+  .nexus-subtitle {
+    font-size: 0.95em;
+    font-family: "Segoe UI", "Inter", system-ui, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #6c7a8d;
+    margin: 0 0 2rem 0;
+    padding: 0;
   }
 
   #search,
@@ -42,12 +67,24 @@
 
 @media screen and (max-width: @tablet) {
   div.title {
-    h1 {
-      font-size: 1em;
+    h1.nexus-title {
+      font-size: 2.2em;
     }
   }
 
   #main_index {
     margin-top: 6em;
+  }
+}
+
+@media screen and (max-width: @phone) {
+  .index h1.nexus-title {
+    font-size: 1.8em;
+    letter-spacing: 0.1em;
+  }
+
+  .index .nexus-subtitle {
+    font-size: 0.75em;
+    letter-spacing: 0.18em;
   }
 }
