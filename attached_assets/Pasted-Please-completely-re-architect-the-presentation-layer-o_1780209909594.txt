@@ -1,0 +1,19 @@
+Please completely re-architect the presentation layer of the search results page (searx/templates/simple/results.html and associated LESS/CSS files) to deliver a unique, premium, and futuristic user experience. Stop using the standard flat list format.
+
+Apply the following specific VVIP design modifications:
+
+1. MODERN CYBER-CARD LAYOUT FOR RESULTS:
+   - Wrap each independent search result item inside a sleek, premium grid card container (`display: flex; flex-direction: column;`).
+   - Give each card a soft modern border radius (`border-radius: 16px;`) with a subtle futuristic glowing cyan outline (`border: 1px solid rgba(0, 240, 255, 0.15);`).
+   - Use advanced glassmorphic styling: make the card body semi-transparent (`background: rgba(20, 20, 25, 0.45) !important;`) and inject a backdrop filter blur (`backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);`) so the underlying Android browser wallpaper shows through with a high-end matte finish.
+
+2. ACCENTUATED TYPOGRAPHY & INTERACTION:
+   - Result Titles: Change the color to an ultra-clean, high-glowing Neon Electric Cyan (#00F0FF). When a user hovers or taps on the title, trigger a smooth scaling animation (`transform: scale(1.01);`) and change the glow shadow.
+   - Snippet/Description Text: Set the font color to a highly readable matte silver/white (`#E0E0E0`) with increased line-height (`line-height: 1.6;`) for effortless reading against any dynamic background wallpaper.
+   - Metadata & Source: Clean up the bottom meta-row (engine source, cached link). Put the source name (e.g., Google, DuckDuckGo) inside a minimalist, glowing badge with rounded edges.
+
+3. GRID ANIMATION & SEPARATION:
+   - Add a subtle slide-up animation with a fade-in effect (`opacity` and `transform: translateY`) so results load smoothly on mobile WebView components.
+   - Ensure ample spacing between cards (`margin-bottom: 20px;`) so the overall page feels expansive, neat, and uniquely premium compared to flat legacy search layouts.
+
+Execute these layout modifications across the template engines, ensuring that mobile responsiveness remains flawlessly intact. Let me know once the preview is compiled!

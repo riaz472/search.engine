@@ -114,94 +114,270 @@ html {
   background: transparent !important;
 }
 
-// ─── Result cards ─────────────────────────────────────────────────────────────
+// ─── Result card animation ────────────────────────────────────────────────────
+
+@keyframes nexus-card-in {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ─── Results container ────────────────────────────────────────────────────────
+
+#urls {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+// ─── VVIP Cyber-Card: base ────────────────────────────────────────────────────
 
 .result {
-  .glass-surface-light();
-  border: 1px solid rgba(0, 240, 255, 0.07) !important;
-  border-radius: 0.5rem;
-  margin: 0.5rem 0 !important;
-  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  display: flex !important;
+  flex-direction: column !important;
+  background: rgba(20, 20, 25, 0.45) !important;
+  backdrop-filter: blur(16px) saturate(1.5) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(1.5) !important;
+  border: 1px solid rgba(0, 240, 255, 0.15) !important;
+  border-radius: 16px !important;
+  margin: 0 0 20px 0 !important;
+  padding: 1.15rem 1.3rem !important;
+  box-sizing: border-box;
+  width: 100% !important;
+  position: relative;
+  overflow: hidden;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease,
+    transform 0.2s ease;
+
+  // Subtle top-edge glow line
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 240, 255, 0.3),
+      transparent
+    );
+    pointer-events: none;
+  }
 
   &:hover {
-    border-color: rgba(0, 240, 255, 0.18) !important;
-    box-shadow: 0 0 20px rgba(0, 240, 255, 0.06);
-    background: rgba(13, 13, 22, 0.72) !important;
+    border-color: rgba(0, 240, 255, 0.32) !important;
+    background: rgba(20, 20, 30, 0.62) !important;
+    box-shadow:
+      0 0 0 1px rgba(0, 240, 255, 0.08),
+      0 8px 32px rgba(0, 0, 0, 0.45),
+      0 0 28px rgba(0, 240, 255, 0.07);
+    transform: translateY(-1px);
   }
 
-  // ── Title links → electric cyan ───────────────────────────────────────────
-  h3 a {
-    color: #00f0ff !important;
-    font-weight: 500;
-    letter-spacing: 0.01em;
+  // ── Staggered slide-up animation on load ──────────────────────────────────
+  animation: nexus-card-in 0.45s ease both;
 
-    &:hover {
-      text-shadow: 0 0 10px rgba(0, 240, 255, 0.45);
-      text-decoration: underline;
-    }
+  &:nth-child(1)  { animation-delay: 0.04s; }
+  &:nth-child(2)  { animation-delay: 0.08s; }
+  &:nth-child(3)  { animation-delay: 0.12s; }
+  &:nth-child(4)  { animation-delay: 0.16s; }
+  &:nth-child(5)  { animation-delay: 0.20s; }
+  &:nth-child(6)  { animation-delay: 0.24s; }
+  &:nth-child(7)  { animation-delay: 0.28s; }
+  &:nth-child(8)  { animation-delay: 0.30s; }
+  &:nth-child(n+9) { animation-delay: 0.32s; }
 
-    &:visited {
-      color: #bf5fcf !important;
+  // ── Title heading ─────────────────────────────────────────────────────────
+  h3 {
+    margin: 0 0 0.35rem 0 !important;
+    padding: 0 !important;
+    font-size: 1.05rem !important;
+
+    a {
+      color: #00f0ff !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.015em;
+      line-height: 1.35;
+      display: inline-block;
+      transition: transform 0.18s ease, text-shadow 0.18s ease, color 0.18s ease;
+
+      &:hover {
+        transform: scale(1.01);
+        text-shadow:
+          0 0 8px rgba(0, 240, 255, 0.7),
+          0 0 20px rgba(0, 240, 255, 0.3);
+        text-decoration: none !important;
+      }
+
+      &:visited {
+        color: #c084fc !important;
+      }
     }
   }
 
-  // ── URL / source line → soft glowing green ────────────────────────────────
+  // ── URL / source breadcrumb ───────────────────────────────────────────────
   .url_wrapper,
   .url_wrapper * {
     color: #4ade80 !important;
-    font-size: 0.78rem;
-    letter-spacing: 0.02em;
-    opacity: 0.85;
+    font-size: 0.76rem !important;
+    letter-spacing: 0.025em;
+    opacity: 0.82;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
   }
 
-  // ── Snippet text → readable light ─────────────────────────────────────────
-  .content {
-    color: #b0bac8 !important;
-    line-height: 1.6;
-    font-size: 0.88rem;
-    margin-top: 0.35rem;
+  // ── Snippet / description ─────────────────────────────────────────────────
+  .content,
+  .stat {
+    color: #e0e0e0 !important;
+    font-size: 0.88rem !important;
+    line-height: 1.65 !important;
+    margin: 0.45rem 0 0 0 !important;
+    padding: 0 !important;
+    max-width: 100%;
 
     .highlight {
-      color: #e0e1e2 !important;
-      background: rgba(0, 240, 255, 0.08);
-      padding: 0 0.15em;
-      border-radius: 0.15em;
+      color: #ffffff !important;
+      background: rgba(0, 240, 255, 0.12);
+      padding: 0 0.2em;
+      border-radius: 0.2em;
+      font-weight: 600;
     }
   }
 
-  // ── Published date / meta ─────────────────────────────────────────────────
+  // ── Meta row: date, views, author ─────────────────────────────────────────
   .published_date,
   .result_length,
   .result_views,
   .result_author,
-  .result_source_country {
-    color: #4a5568 !important;
-    font-size: 0.75rem;
+  .result_source_country,
+  .result_shipping {
+    color: #4b5a72 !important;
+    font-size: 0.72rem !important;
+    letter-spacing: 0.03em;
   }
 
-  // ── Engine badges ─────────────────────────────────────────────────────────
-  .engines span {
-    color: #3a4558 !important;
-    font-size: 0.7rem;
+  // ── Engine source badges row ──────────────────────────────────────────────
+  .engines {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    justify-content: flex-end;
+    float: none !important;
+    margin-top: 0.65rem !important;
+
+    span {
+      display: inline-flex !important;
+      align-items: center;
+      padding: 0.15rem 0.55rem !important;
+      background: rgba(0, 240, 255, 0.05) !important;
+      border: 1px solid rgba(0, 240, 255, 0.12) !important;
+      border-radius: 999px !important;
+      color: rgba(0, 240, 255, 0.55) !important;
+      font-size: 0.65rem !important;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+
+      &:hover {
+        background: rgba(0, 240, 255, 0.12) !important;
+        color: #00f0ff !important;
+        border-color: rgba(0, 240, 255, 0.3) !important;
+      }
+    }
+  }
+
+  // ── Favicon ───────────────────────────────────────────────────────────────
+  .favicon img {
+    border-radius: 4px !important;
+    border: 1px solid rgba(0, 240, 255, 0.1) !important;
+    background: rgba(14, 16, 24, 0.6) !important;
+  }
+
+  // ── Cache / proxy links ───────────────────────────────────────────────────
+  .cache_link,
+  .proxyfied_link {
+    color: rgba(0, 240, 255, 0.4) !important;
+    font-size: 0.7rem !important;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #00f0ff !important;
+    }
+  }
+
+  // ── Vim-mode selected state ───────────────────────────────────────────────
+  &[data-vim-selected] {
+    border-color: rgba(0, 240, 255, 0.45) !important;
+    background: rgba(20, 22, 35, 0.7) !important;
+    box-shadow:
+      inset 0 0 0 1px rgba(0, 240, 255, 0.2),
+      0 0 24px rgba(0, 240, 255, 0.08);
+    border-left: 0.2rem solid #00f0ff !important;
+    border-radius: 16px !important;
   }
 }
 
-// Phone-layout result cards — override the solid mobile background
-@media screen and (max-width: @phone) {
-  .result {
-    .glass-surface-light();
-    border: 1px solid rgba(0, 240, 255, 0.08) !important;
-    margin: 0.6rem 2% !important;
-    width: 96% !important;
+// ─── Video cards — wider thumbnail ────────────────────────────────────────────
+
+.result-videos {
+  a.thumbnail_link img.thumbnail {
+    border-radius: 10px;
+    border: 1px solid rgba(0, 240, 255, 0.1);
   }
+}
+
+// ─── Category group cards (news, map, video, music, social) ───────────────────
+
+.category-videos,
+.category-news,
+.category-map,
+.category-music,
+.category-social {
+  background: rgba(20, 20, 25, 0.45) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(0, 240, 255, 0.15) !important;
+  border-radius: 16px !important;
+  margin: 0 0 20px 0 !important;
+  animation: nexus-card-in 0.45s ease both;
 }
 
 // ─── Answers block ────────────────────────────────────────────────────────────
 
 #answers {
-  .glass-surface();
-  border: 1px solid rgba(0, 240, 255, 0.1) !important;
-  border-radius: 0.5rem;
+  background: rgba(14, 16, 24, 0.6) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(0, 240, 255, 0.18) !important;
+  border-radius: 16px !important;
+  margin-bottom: 20px !important;
+}
+
+// ─── Phone-layout result cards ────────────────────────────────────────────────
+
+@media screen and (max-width: @phone) {
+  .result {
+    background: rgba(20, 20, 25, 0.55) !important;
+    border: 1px solid rgba(0, 240, 255, 0.15) !important;
+    border-radius: 14px !important;
+    margin: 0 0 14px 0 !important;
+    width: 100% !important;
+    padding: 1rem !important;
+  }
 }
 
 // ─── Sidebar & infoboxes ──────────────────────────────────────────────────────
