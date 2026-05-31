@@ -1,4 +1,4 @@
----
+I'm---
 title: Nexus Search Ultimate
 emoji: 🔍
 colorFrom: blue
@@ -7,7 +7,6 @@ sdk: docker
 app_port: 7860
 pinned: false
 ---
-
 # Nexus Search Ultimate
 
 A privacy-respecting metasearch engine powered by [SearXNG](https://github.com/searxng/searxng).
